@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Security | Hope & Harmony Detailed Impact</title>
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+        .service-hero-detail {
+            height: 70vh;
+            min-height: 500px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .service-hero-detail img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .service-hero-detail::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+            z-index: -1;
+        }
+
+        .hero-content-detail {
+            max-width: 800px;
+            padding: 0 24px;
+        }
+
+        .detail-section {
+            padding: 100px 0;
+        }
+
+        .depth-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+            margin-top: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-light);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--bg-white);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .depth-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-standard">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
+            <nav class="standard-links">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+                <a href="pricing.html" class="nav-donate-btn">Donate</a>
+            </nav>
+            <div class="login-dropdown-wrap" id="loginDropWrap">
+                <button class="login-icon-btn" id="loginIconBtn" aria-label="Account" aria-expanded="false"
+                    aria-haspopup="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                    </svg>
+                </button>
+                <div class="login-dropdown" id="loginDropdown" role="menu">
+                    <a href="../auth/login.html" role="menuitem"><span class="dd-icon">🔑</span> Login</a>
+                    <a href="../auth/signup.html" role="menuitem"><span class="dd-icon">✨</span> Sign Up</a>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-links">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="pricing.html">Donate</a>
+            <a href="../auth/login.html">Login</a>
+            <a href="../auth/signup.html">Sign Up</a>
+        </nav>
+    </div>
+
+    <main>
+        <section class="service-hero-detail">
+            <img src="../asset/com img.jpg"
+                alt="Food Security Impact">
+            <div class="hero-content-detail">
+                <div class="reveal">
+                    <span class="category" style="color: var(--primary-light);">Deep Dive</span>
+                    <h1 class="text-serif" style="font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 20px;">Food
+                        Security: Ending <span class="text-italic">Hunger.</span></h1>
+                    <p style="font-size: 1.1rem; opacity: 0.9;">Transforming subsistence farming into sustainable
+                        nutrition for a growing world.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="detail-section bg-white">
+            <div class="container">
+                <div class="depth-grid">
+                    <div class="reveal">
+                        <h2 class="text-serif" style="margin-bottom: 30px;">Our Regenerative Agriculture Model</h2>
+                        <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.8;">Our approach to food
+                            security is built on <strong>Resilience</strong>. We focus on training farmers to work with
+                            their local environments through composting, crop rotation, and water-efficient irrigation,
+                            ensuring that even in drought years, a family can feed itself.</p>
+
+                        <div class="svc-problem" style="margin: 40px 0;">
+                            <h4>The Root Problem</h4>
+                            <p>Global hunger is not a production problem; it's a distribution and resilience problem.
+                                Fluctuating market prices and climate shocks leave smallholder farmers vulnerable,
+                                leading to seasonal malnutrition that stunts children's growth and potential.</p>
+                        </div>
+
+                        <p style="line-height: 1.8;">We establish community-managed seed banks that preserve resilient,
+                            indigenous varieties. Furthermore, our school nutrition programs provide a direct market for
+                            local farmers, creating a closed-loop system where the community's children are fed by the
+                            community's land.</p>
+                    </div>
+
+                    <div class="reveal" style="background: var(--bg-light); padding: 40px; border-radius: 24px;">
+                        <h3 class="text-serif" style="margin-bottom: 20px;">Impact at a Glance</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
+                                <span style="font-size: 1.5rem;">🥗</span>
+                                <div><strong>120M</strong> Meals Served to School Children</div>
+                            </li>
+                            <li style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
+                                <span style="font-size: 1.5rem;">👨‍🌾</span>
+                                <div><strong>85,000</strong> Farmers Trained in Regenerative Tech</div>
+                            </li>
+                            <li style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
+                                <span style="font-size: 1.5rem;">🏦</span>
+                                <div><strong>400+</strong> Community Seed Banks Established</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="detail-section bg-light">
+            <div class="container">
+                <div class="text-center reveal" style="margin-bottom: 60px;">
+                    <h2 class="text-serif">Harvesting Change Over Time</h2>
+                    <p>Building a world where no child goes to bed hungry.</p>
+                </div>
+
+                <div class="timeline reveal">
+                    <div class="timeline-item">
+                        <span class="timeline-year">2016</span>
+                        <h4 class="text-serif">The First Seed Bank</h4>
+                        <p>Launched our first indigenous seed collective in Central America, preserving 50 types of
+                            heritage corn.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2019</span>
+                        <h4 class="text-serif">School Farm Integration</h4>
+                        <p>Began building school gardens that serve as both outdoor classrooms and source of fresh
+                            vegetables for lunch programs.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2022</span>
+                        <h4 class="text-serif">The Drought Resilience Fund</h4>
+                        <p>Established a community-managed insurance fund for farmers to mitigate the impact of
+                            unpredictable weather patterns.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">Present</span>
+                        <h4 class="text-serif">Regional Food Hubs</h4>
+                        <p>Opening large-scale processing centers that allow local farmers to package and sell their
+                            surplus to urban markets.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="detail-section bg-dark text-white text-center">
+            <div class="container reveal">
+                <h2 class="text-serif" style="margin-bottom: 24px;">Nourish a Community</h2>
+                <p style="margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.8;">
+                    Your support provides the seeds, tools, and training needed for communities to achieve permanent
+                    food independence.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="../pages/booking.html" class="btn btn-primary">Fund a Harvest</a>
+                    <a href="contact.html" class="btn btn-outline" style="color: white; border-color: white;">Partner
+                        with Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer section">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo text-serif">Hope & Harmony</a>
+                    <p>Building sustainable futures through compassion, action, and radical transparency.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="nav-group">
+                        <h4>Explore</h4>
+                        <ul>
+                            <li><a href="pages/about.html">Our Story</a></li>
+                            <li><a href="pages/services.html">Causes</a></li>
+                            <li><a href="pages/blog.html">Impact Stories</a></li>
+                            <li><a href="pages/pricing.html">Donate</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="pages/contact.html">Contact Us</a></li>
+                            <li><a href="auth/login.html">Donor Portal</a></li>
+                            <li><a href="pages/contact.html">Volunteer</a></li>
+                            <li><a href="pages/contact.html">Partner With Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hope & Harmony NGO. All rights reserved. Registered Charity No. 1234567.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../src/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.utils.toArray('.reveal').forEach(elem => {
+                gsap.from(elem, {
+                    scrollTrigger: { trigger: elem, start: 'top 85%', toggleActions: 'play none none none' },
+                    y: 40, opacity: 0, duration: 1, ease: 'power3.out'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,915 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Causes | Hope & Harmony</title>
+    <meta name="description"
+        content="Explore Hope & Harmony's six core causes — Education, Clean Water, Climate, Healthcare, Empowerment, and Food Security.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <style>
+        /* ── SERVICES DETAILED STYLES ── */
+
+        /* Service Nav Anchors */
+        .service-nav-strip {
+            position: sticky;
+            top: 72px;
+            z-index: 500;
+            background: rgba(253, 252, 251, 0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 0;
+        }
+
+        .service-nav-inner {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .service-nav-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .svc-nav-link {
+            flex-shrink: 0;
+            padding: 18px 24px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .svc-nav-link:hover,
+        .svc-nav-link.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Service Detail Block */
+        .service-detail {
+            padding: 120px 0;
+            scroll-margin-top: 130px;
+        }
+
+        .service-detail:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .service-detail:nth-child(odd) {
+            background: var(--bg-white);
+        }
+
+        .svc-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .svc-detail-grid.reverse {
+            direction: rtl;
+        }
+
+        .svc-detail-grid.reverse>* {
+            direction: ltr;
+        }
+
+        /* Service Hero Banner */
+        .svc-hero-banner {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            height: 480px;
+        }
+
+        .svc-hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .service-detail:hover .svc-hero-banner img {
+            transform: scale(1.04);
+        }
+
+        .svc-banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+        }
+
+        .svc-banner-caption {
+            position: absolute;
+            bottom: 32px;
+            left: 32px;
+            right: 32px;
+            color: #fff;
+        }
+
+        .svc-banner-caption .svc-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .svc-banner-caption h2 {
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            line-height: 1.15;
+            margin-bottom: 8px;
+        }
+
+        .svc-banner-caption p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            max-width: 400px;
+        }
+
+        /* Content Side */
+
+
+        .svc-problem {
+            background: rgba(217, 119, 6, 0.06);
+            border-left: 3px solid var(--primary);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 32px;
+        }
+
+        .svc-problem h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+        }
+
+        .svc-problem p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .svc-solution {
+            margin-bottom: 32px;
+        }
+
+        .svc-solution h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .svc-solution p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Programs List */
+        .svc-programs {
+            margin-bottom: 32px;
+        }
+
+        .svc-programs h4 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+
+        .program-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .program-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--bg-white);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .service-detail:nth-child(even) .program-item {
+            background: var(--bg-white);
+        }
+
+        .program-item:hover {
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .prog-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .prog-text strong {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .prog-text span {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Impact Metrics Row */
+        .svc-metrics {
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+            background: var(--text-main);
+            border-radius: 20px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .svc-metric {
+            text-align: center;
+            flex: 1;
+            min-width: 80px;
+        }
+
+        .svc-metric .m-num {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .svc-metric .m-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        /* CTA Row */
+        .svc-cta-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .svc-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .svc-detail-grid.reverse {
+                direction: ltr;
+            }
+
+            .svc-hero-banner {
+                height: 360px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-detail {
+                padding: 80px 0;
+            }
+
+            .svc-hero-banner {
+                height: 280px;
+            }
+
+            .svc-metrics {
+                gap: 16px;
+            }
+
+            .svc-metric .m-num {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .svc-hero-banner {
+                height: 240px;
+            }
+
+            .svc-banner-caption h2 {
+                font-size: 1.6rem;
+            }
+
+            .svc-cta-row {
+                flex-direction: column;
+            }
+
+            .service-nav-strip {
+                top: 60px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header-standard" id="mainHeader">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
+            <nav class="standard-links" id="mainNav">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+                <a href="pricing.html" class="nav-donate-btn">Donate</a>
+            </nav>
+            <div class="login-dropdown-wrap" id="loginDropWrap">
+                <button class="login-icon-btn" id="loginIconBtn" aria-label="Account" aria-expanded="false"
+                    aria-haspopup="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                    </svg>
+                </button>
+                <div class="login-dropdown" id="loginDropdown" role="menu">
+                    <a href="../auth/login.html" role="menuitem">
+                        <span class="dd-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                <polyline points="10 17 15 12 10 7"></polyline>
+                                <line x1="15" y1="12" x2="3" y2="12"></line>
+                            </svg>
+                        </span> Login
+                    </a>
+                    <a href="../auth/signup.html" role="menuitem">
+                        <span class="dd-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="8.5" cy="7" r="4"></circle>
+                                <line x1="20" y1="8" x2="20" y2="14"></line>
+                                <line x1="17" y1="11" x2="23" y2="11"></line>
+                            </svg>
+                        </span> Sign Up
+                    </a>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-links">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="pricing.html">Donate</a>
+            <a href="../auth/login.html">Login</a>
+            <a href="../auth/signup.html">Sign Up</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ===== PAGE HERO ===== -->
+        <section
+            style="background: linear-gradient(135deg, #1F2937 0%, #374151 100%); color: white; padding: 160px 0 80px;">
+            <div class="container text-center">
+                <div class="reveal">
+                    <span class="category" style="color: var(--primary-light);">Our Impact</span>
+                    <h1 class="text-serif"
+                        style="font-size: clamp(3rem, 7vw, 5.5rem); margin-bottom: 24px; color: white;">Six Ways We
+                        <span class="text-italic" style="color: var(--primary-light);">Change Lives.</span>
+                    </h1>
+                    <p class="subtitle" style="color: rgba(255,255,255,0.75); max-width: 640px; margin: 0 auto;">From
+                        classrooms to clinics, from wells to forests — every cause is a commitment backed by programs,
+                        partnerships, and measurable outcomes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== STICKY SERVICE NAV ===== -->
+        <nav class="service-nav-strip" aria-label="Service sections">
+            <div class="container">
+                <div class="service-nav-inner">
+                    <a href="#education" class="svc-nav-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="vertical-align:middle;margin-right:5px">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                        Education
+                    </a>
+                    <a href="#water" class="svc-nav-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="vertical-align:middle;margin-right:5px">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        Clean Water
+                    </a>
+                    <a href="#climate" class="svc-nav-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="vertical-align:middle;margin-right:5px">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 21 2c-2 5-2.5 7-3 12a7 7 0 0 1-7 6z"></path>
+                        </svg>
+                        Climate
+                    </a>
+                    <a href="#healthcare" class="svc-nav-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="vertical-align:middle;margin-right:5px">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                        Healthcare
+                    </a>
+                    <a href="#empowerment" class="svc-nav-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="vertical-align:middle;margin-right:5px">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        Empowerment
+                    </a>
+                    <a href="#food" class="svc-nav-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="vertical-align:middle;margin-right:5px">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 21 2c-2 5-2.5 7-3 12a7 7 0 0 1-7 6z"></path>
+                            <path d="M9 10a1 1 0 0 1-2 0V9a1 1 0 0 1 2 0"></path>
+                        </svg>
+                        Food Security
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ===================================================
+             SERVICE 1: EDUCATION
+             =================================================== -->
+        <section class="service-detail" id="education">
+            <div class="container">
+                <div class="svc-detail-grid">
+                    <!-- Visual -->
+                    <div class="reveal">
+                        <div class="svc-hero-banner">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop"
+                                alt="Education">
+                            <div class="svc-banner-overlay"></div>
+                            <div class="svc-banner-caption">
+                                <span class="svc-badge">Education</span>
+                                <h2 class="text-serif">Classrooms of Change</h2>
+                                <p>500,000 students reached across 30 countries</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="svc-content-col reveal">
+                        <div class="section-label" style="margin-bottom: 20px;">
+                            <span class="label-line"></span>
+                            <span class="label-text">Education</span>
+                        </div>
+                        <h2 class="text-serif" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 24px;">Every
+                            Child Deserves a <span class="text-italic text-primary">Classroom.</span></h2>
+
+                        <div class="svc-problem">
+                            <h4>The Problem</h4>
+                            <p>Over 244 million children worldwide are out of school. In rural and conflict-affected
+                                regions, lack of infrastructure, trained teachers, and learning materials leaves entire
+                                generations without a future.</p>
+                        </div>
+
+                        <div class="svc-solution">
+                            <h4 class="text-serif">Our Solution</h4>
+                            <p>We build solar-powered schools, train local teachers, and deploy digital learning tools —
+                                creating self-sustaining education ecosystems that communities can maintain long after
+                                we leave.</p>
+                        </div>
+
+
+
+                        <div class="svc-cta-row">
+                            <a href="pricing.html" class="btn-primary">Donate to Education</a>
+                            <a href="service-education.html" class="btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             SERVICE 2: CLEAN WATER
+             =================================================== -->
+        <section class="service-detail" id="water">
+            <div class="container">
+                <div class="svc-detail-grid reverse">
+                    <!-- Visual -->
+                    <div class="reveal">
+                        <div class="svc-hero-banner">
+                            <img src="../asset/index img.jpg" alt="Clean Water">
+                            <div class="svc-banner-overlay"></div>
+                            <div class="svc-banner-caption">
+                                <span class="svc-badge">Clean Water</span>
+                                <h2 class="text-serif">Water for Life</h2>
+                                <p>40,000 people with clean water access</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="svc-content-col reveal">
+                        <div class="section-label" style="margin-bottom: 20px;">
+                            <span class="label-line"></span>
+                            <span class="label-text">Clean Water</span>
+                        </div>
+                        <h2 class="text-serif" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 24px;">Water
+                            is a <span class="text-italic text-primary">Human Right.</span></h2>
+
+                        <div class="svc-problem">
+                            <h4>The Problem</h4>
+                            <p>2.2 billion people lack access to safe drinking water. Women and girls walk an average of
+                                6km daily to collect water — time stolen from education, work, and family. Waterborne
+                                diseases kill more children than malaria and HIV combined.</p>
+                        </div>
+
+                        <div class="svc-solution">
+                            <h4 class="text-serif">Our Solution</h4>
+                            <p>We drill deep wells, install solar-powered pumps, and build community-managed filtration
+                                systems. Every installation includes hygiene training and a local maintenance committee
+                                to ensure long-term sustainability.</p>
+                        </div>
+
+
+
+                        <div class="svc-cta-row">
+                            <a href="pricing.html" class="btn-primary">Fund a Well</a>
+                            <a href="service-water.html" class="btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             SERVICE 3: CLIMATE
+             =================================================== -->
+        <section class="service-detail" id="climate">
+            <div class="container">
+                <div class="svc-detail-grid">
+                    <!-- Visual -->
+                    <div class="reveal">
+                        <div class="svc-hero-banner">
+                            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200&auto=format&fit=crop"
+                                alt="Climate">
+                            <div class="svc-banner-overlay"></div>
+                            <div class="svc-banner-caption">
+                                <span class="svc-badge">Climate</span>
+                                <h2 class="text-serif">Green Earth Initiative</h2>
+                                <p>10,000 hectares reforested across 5 countries</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="svc-content-col reveal">
+                        <div class="section-label" style="margin-bottom: 20px;">
+                            <span class="label-line"></span>
+                            <span class="label-text">Climate Action</span>
+                        </div>
+                        <h2 class="text-serif" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 24px;">Healing
+                            the <span class="text-italic text-primary">Planet.</span></h2>
+
+                        <div class="svc-problem">
+                            <h4>The Problem</h4>
+                            <p>Climate change disproportionately impacts the world's poorest communities — the very
+                                people who contribute least to it. Deforestation, desertification, and extreme weather
+                                are destroying livelihoods and displacing millions.</p>
+                        </div>
+
+                        <div class="svc-solution">
+                            <h4 class="text-serif">Our Solution</h4>
+                            <p>We combine large-scale reforestation with community-based climate resilience programs —
+                                training farmers in regenerative agriculture, building flood defenses, and creating
+                                green jobs that sustain families for generations.</p>
+                        </div>
+
+
+
+                        <div class="svc-cta-row">
+                            <a href="pricing.html" class="btn-primary">Plant a Tree</a>
+                            <a href="service-climate.html" class="btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             SERVICE 4: HEALTHCARE
+             =================================================== -->
+        <section class="service-detail" id="healthcare">
+            <div class="container">
+                <div class="svc-detail-grid reverse">
+                    <!-- Visual -->
+                    <div class="reveal">
+                        <div class="svc-hero-banner">
+                            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200&auto=format&fit=crop"
+                                alt="Healthcare">
+                            <div class="svc-banner-overlay"></div>
+                            <div class="svc-banner-caption">
+                                <span class="svc-badge">Healthcare</span>
+                                <h2 class="text-serif">Mobile Wellness Program</h2>
+                                <p>50,000 people reached with essential medical care</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="svc-content-col reveal">
+                        <div class="section-label" style="margin-bottom: 20px;">
+                            <span class="label-line"></span>
+                            <span class="label-text">Healthcare</span>
+                        </div>
+                        <h2 class="text-serif" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 24px;">Health
+                            is a <span class="text-italic text-primary">Foundation.</span></h2>
+
+                        <div class="svc-problem">
+                            <h4>The Problem</h4>
+                            <p>Over 400 million people lack access to basic healthcare. In remote communities, the
+                                nearest clinic can be a day's walk away. Preventable diseases, maternal mortality, and
+                                childhood malnutrition remain devastating realities.</p>
+                        </div>
+
+                        <div class="svc-solution">
+                            <h4 class="text-serif">Our Solution</h4>
+                            <p>We deploy fully-equipped mobile clinics staffed by trained local health workers. Our
+                                community health model trains village health ambassadors who provide ongoing care
+                                between clinic visits — bridging the gap between formal healthcare and remote
+                                communities.</p>
+                        </div>
+
+
+
+                        <div class="svc-cta-row">
+                            <a href="pricing.html" class="btn-primary">Fund a Clinic</a>
+                            <a href="service-healthcare.html" class="btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             SERVICE 5: EMPOWERMENT
+             =================================================== -->
+        <section class="service-detail" id="empowerment">
+            <div class="container">
+                <div class="svc-detail-grid">
+                    <!-- Visual -->
+                    <div class="reveal">
+                        <div class="svc-hero-banner">
+                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop"
+                                alt="Empowerment">
+                            <div class="svc-banner-overlay"></div>
+                            <div class="svc-banner-caption">
+                                <span class="svc-badge">Empowerment</span>
+                                <h2 class="text-serif">Women's Skills Academy</h2>
+                                <p>2,000 women trained in vocational skills and finance</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="svc-content-col reveal">
+                        <div class="section-label" style="margin-bottom: 20px;">
+                            <span class="label-line"></span>
+                            <span class="label-text">Empowerment</span>
+                        </div>
+                        <h2 class="text-serif" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 24px;">When
+                            Women Rise, <span class="text-italic text-primary">Communities Thrive.</span></h2>
+
+                        <div class="svc-problem">
+                            <h4>The Problem</h4>
+                            <p>Gender inequality costs the global economy $160 trillion annually. Women in developing
+                                regions face systemic barriers to education, economic participation, and leadership —
+                                perpetuating cycles of poverty across generations.</p>
+                        </div>
+
+                        <div class="svc-solution">
+                            <h4 class="text-serif">Our Solution</h4>
+                            <p>We run vocational training academies, micro-finance programs, and leadership development
+                                initiatives — giving women the skills, capital, and confidence to build businesses, lead
+                                communities, and inspire the next generation.</p>
+                        </div>
+
+                        <div class="svc-cta-row">
+                            <a href="pricing.html" class="btn-primary">Empower a Woman</a>
+                            <a href="service-empowerment.html" class="btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             SERVICE 6: FOOD SECURITY
+             =================================================== -->
+        <section class="service-detail" id="food">
+            <div class="container">
+                <div class="svc-detail-grid reverse">
+                    <!-- Visual -->
+                    <div class="reveal">
+                        <div class="svc-hero-banner">
+                            <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=1200&auto=format&fit=crop"
+                                alt="Food Security">
+                            <div class="svc-banner-overlay"></div>
+                            <div class="svc-banner-caption">
+                                <span class="svc-badge">Food Security</span>
+                                <h2 class="text-serif">Regenerative Farms</h2>
+                                <p>10,000 families fed through sustainable agriculture</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="svc-content-col reveal">
+                        <div class="section-label" style="margin-bottom: 20px;">
+                            <span class="label-line"></span>
+                            <span class="label-text">Food Security</span>
+                        </div>
+                        <h2 class="text-serif" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 24px;">No
+                            Family Should Go <span class="text-italic text-primary">Hungry.</span></h2>
+
+                        <div class="svc-problem">
+                            <h4>The Problem</h4>
+                            <p>828 million people go to bed hungry every night. Climate change, soil degradation, and
+                                lack of agricultural knowledge are destroying the food systems that rural communities
+                                depend on for survival.</p>
+                        </div>
+
+                        <div class="svc-solution">
+                            <h4 class="text-serif">Our Solution</h4>
+                            <p>We train farmers in regenerative agriculture techniques that restore soil health,
+                                increase yields, and build climate resilience — without expensive inputs. Our community
+                                seed banks and cooperative models ensure food sovereignty for generations.</p>
+                        </div>
+                        <div class="svc-cta-row">
+                            <a href="pricing.html" class="btn-primary">Feed a Family</a>
+                            <a href="service-food.html" class="btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FINAL CTA ===== -->
+        <section class="section bg-dark text-white" style="text-align: center;">
+            <div class="container">
+                <div class="reveal">
+                    <h2 class="text-serif" style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 20px;">Choose a
+                        Cause. <span class="text-italic" style="color: var(--primary-light);">Change a Life.</span></h2>
+                    <p style="color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto 40px;">Every donation, no
+                        matter the size, creates a ripple of change that lasts for generations.</p>
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <a href="pricing.html" class="btn-magnetic">Start Giving Today</a>
+                        <a href="contact.html" class="btn-magnetic outline">Volunteer With Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer section">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
+                    <p>Building sustainable futures through compassion, action, and radical transparency.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="nav-group">
+                        <h4>Explore</h4>
+                        <ul>
+                            <li><a href="about.html">Our Story</a></li>
+                            <li><a href="services.html">Causes</a></li>
+                            <li><a href="blog.html">Impact Stories</a></li>
+                            <li><a href="pricing.html">Donate</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="../auth/login.html">Donor Portal</a></li>
+                            <li><a href="contact.html">Volunteer</a></li>
+                            <li><a href="contact.html">Partner With Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hope & Harmony NGO. All rights reserved. Registered Charity No. 1234567.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../src/js/main.js"></script>
+    <script>
+        // Active service nav on scroll
+        const sections = document.querySelectorAll('.service-detail[id]');
+        const navLinks = document.querySelectorAll('.svc-nav-link');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    const active = document.querySelector(`.svc-nav-link[href="#${entry.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { threshold: 0.35 });
+        sections.forEach(s => observer.observe(s));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Hope & Harmony</title>
+    <meta name="description"
+        content="Get in touch with Hope & Harmony. Whether you want to donate, volunteer, or partner with us, we'd love to hear from you.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        /* Soft grey-blue navbar for Blog & Contact pages */
+        .page-grey-nav {
+            background: rgba(226, 232, 240, 0.97) !important;
+            backdrop-filter: blur(16px) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06) !important;
+        }
+
+        .page-grey-nav .logo,
+        .page-grey-nav .standard-links a {
+            color: var(--text-main) !important;
+        }
+
+        .page-grey-nav .login-icon-btn {
+            color: var(--text-main) !important;
+        }
+
+        .page-grey-nav .hamburger span {
+            background: var(--text-main) !important;
+        }
+
+        .page-grey-nav.scrolled {
+            background: rgba(210, 218, 230, 0.98) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header-standard page-grey-nav" id="mainHeader">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
+            <nav class="standard-links" id="mainNav">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html" class="active">Contact</a>
+                <a href="pricing.html" class="nav-donate-btn">Donate</a>
+            </nav>
+            <div class="login-dropdown-wrap" id="loginDropWrap">
+                <button class="login-icon-btn" id="loginIconBtn" aria-label="Account" aria-expanded="false"
+                    aria-haspopup="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                    </svg>
+                </button>
+                <div class="login-dropdown" id="loginDropdown" role="menu">
+                    <a href="../auth/login.html" role="menuitem">
+                        <span class="dd-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                <polyline points="10 17 15 12 10 7"></polyline>
+                                <line x1="15" y1="12" x2="3" y2="12"></line>
+                            </svg>
+                        </span>
+                        Login
+                    </a>
+                    <a href="../auth/signup.html" role="menuitem">
+                        <span class="dd-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <line x1="19" y1="8" x2="19" y2="14"></line>
+                                <line x1="22" y1="11" x2="16" y2="11"></line>
+                            </svg>
+                        </span>
+                        Sign Up
+                    </a>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-links">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="pricing.html" class="nav-donate-btn">Donate</a>
+            <a href="../auth/login.html">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                    <polyline points="10 17 15 12 10 7"></polyline>
+                    <line x1="15" y1="12" x2="3" y2="12"></line>
+                </svg>
+                Login
+            </a>
+            <a href="../auth/signup.html">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <line x1="19" y1="8" x2="19" y2="14"></line>
+                    <line x1="22" y1="11" x2="16" y2="11"></line>
+                </svg>
+                Sign Up
+            </a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ===== CONTACT SPLIT HERO ===== -->
+        <section class="contact-split-hero section" style="padding-top: 150px; background: var(--bg-light);">
+            <div class="container">
+                <div class="split-grid">
+                    <!-- Info Side -->
+                    <div class="split-info reveal">
+                        <span class="category">Get In Touch</span>
+                        <h1 class="text-serif">Let's Build <br><span class="text-italic text-primary">Together.</span>
+                        </h1>
+                        <p>Whether you're a donor, volunteer, partner, or just curious — we'd love to connect. Our team
+                            is here to answer every question with care.</p>
+
+                        <div class="contact-methods">
+                            <div class="method-item">
+                                <h4>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        style="vertical-align:middle;margin-right:6px">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    Our Headquarters
+                                </h4>
+                                <p>14 Harmony Lane, London, EC1A 1BB, United Kingdom</p>
+                            </div>
+                            <div class="method-item">
+                                <h4>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        style="vertical-align:middle;margin-right:6px">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-.75a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                    </svg>
+                                    Phone
+                                </h4>
+                                <p><a href="tel:+442071234567" class="link-underline">+44 207 123 4567</a></p>
+                            </div>
+                            <div class="method-item">
+                                <h4>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        style="vertical-align:middle;margin-right:6px">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                        </path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                    Email
+                                </h4>
+                                <p><a href="mailto:hello@hopeharmony.org"
+                                        class="link-underline">hello@hopeharmony.org</a></p>
+                            </div>
+                            <div class="method-item">
+                                <h4>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        style="vertical-align:middle;margin-right:6px">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    Office Hours
+                                </h4>
+                                <p>Monday &ndash; Friday: 9:00 AM &ndash; 6:00 PM GMT</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-social" style="margin-top: 32px;">
+                            <a href="#" class="social-link">Instagram</a>
+                            <a href="#" class="social-link">LinkedIn</a>
+                            <a href="#" class="social-link">Twitter</a>
+                            <a href="#" class="social-link">Facebook</a>
+                        </div>
+                    </div>
+
+                    <!-- Form Side -->
+                    <div class="glass-form-wrap reveal">
+                        <h2 class="text-serif">Send a Message</h2>
+                        <form class="glass-form" id="contactForm" novalidate>
+                            <div class="form-row">
+                                <div class="form-group-v2">
+                                    <input type="text" class="form-input-v2" placeholder="First Name" required>
+                                    <span class="form-error">Please enter your first name</span>
+                                </div>
+                                <div class="form-group-v2">
+                                    <input type="text" class="form-input-v2" placeholder="Last Name" required>
+                                    <span class="form-error">Please enter your last name</span>
+                                </div>
+                            </div>
+                            <div class="form-group-v2">
+                                <input type="email" class="form-input-v2" placeholder="Email Address" required>
+                                <span class="form-error">Please enter a valid email</span>
+                            </div>
+                            <div class="form-group-v2">
+                                <input type="tel" class="form-input-v2" placeholder="Phone (optional)">
+                            </div>
+                            <div class="form-group-v2">
+                                <select class="form-input-v2" required>
+                                    <option value="" disabled selected>I'm reaching out about…</option>
+                                    <option>Donating</option>
+                                    <option>Volunteering</option>
+                                    <option>Corporate Partnership</option>
+                                    <option>Media Inquiry</option>
+                                    <option>General Question</option>
+                                </select>
+                                <span class="form-error">Please select a topic</span>
+                            </div>
+                            <div class="form-group-v2">
+                                <textarea class="form-input-v2" rows="5" placeholder="Your message…" required
+                                    style="resize: vertical;"></textarea>
+                                <span class="form-error">Please enter your message</span>
+                            </div>
+                            <button type="submit" class="btn-submit-v2" id="contactSubmitBtn">
+                                <span class="btn-loader"></span>
+                                <span class="btn-text">Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MAP SECTION ===== -->
+        <section class="section bg-white">
+            <div class="container">
+                <div class="section-label reveal">
+                    <span class="label-line"></span>
+                    <span class="label-text">Our Reach</span>
+                </div>
+                <h2 class="text-serif reveal" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 40px;">We're
+                    <span class="text-italic text-primary">Everywhere.</span>
+                </h2>
+                <div class="map-visual reveal">
+                    <div class="interactive-map">
+                        <div class="pulse-point" style="top: 35%; left: 48%;" data-tooltip="London HQ"></div>
+                        <div class="pulse-point" style="top: 55%; left: 52%;" data-tooltip="Nairobi Office"></div>
+                        <div class="pulse-point" style="top: 45%; left: 25%;" data-tooltip="New York Office"></div>
+                        <div class="pulse-point" style="top: 40%; left: 72%;" data-tooltip="Delhi Office"></div>
+                        <div class="pulse-point" style="top: 65%; left: 80%;" data-tooltip="Sydney Office"></div>
+                        <div class="pulse-point" style="top: 60%; left: 30%;" data-tooltip="São Paulo Office"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===== FAQ ===== -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-label reveal">
+                    <span class="label-line"></span>
+                    <span class="label-text">FAQ</span>
+                </div>
+                <h2 class="text-serif reveal" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 60px;">Common
+                    <span class="text-italic text-primary">Questions.</span>
+                </h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;">
+                    <div class="reveal"
+                        style="background: white; padding: 32px; border-radius: 20px; box-shadow: var(--shadow-sm);">
+                        <h4 class="text-serif" style="margin-bottom: 12px;">How do I know my donation reaches the right
+                            people?</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">We publish quarterly
+                            impact reports and provide real-time tracking for all major donations. 90% of funds go
+                            directly to projects.</p>
+                    </div>
+                    <div class="reveal"
+                        style="background: white; padding: 32px; border-radius: 20px; box-shadow: var(--shadow-sm);">
+                        <h4 class="text-serif" style="margin-bottom: 12px;">Can I volunteer remotely?</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">Yes! We have remote
+                            volunteer roles in content creation, translation, data analysis, and fundraising. Apply
+                            through our volunteer portal.</p>
+                    </div>
+                    <div class="reveal"
+                        style="background: white; padding: 32px; border-radius: 20px; box-shadow: var(--shadow-sm);">
+                        <h4 class="text-serif" style="margin-bottom: 12px;">Do you accept corporate partnerships?</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">Absolutely. We have a
+                            dedicated corporate partnerships team. Email us at partnerships@hopeharmony.org to get
+                            started.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
+                    <p>Building sustainable futures through compassion, action, and radical transparency.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="nav-group">
+                        <h4>Explore</h4>
+                        <ul>
+                            <li><a href="about.html">Our Story</a></li>
+                            <li><a href="services.html">Causes</a></li>
+                            <li><a href="blog.html">Impact Stories</a></li>
+                            <li><a href="pricing.html">Donate</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="../auth/login.html">Donor Portal</a></li>
+                            <li><a href="contact.html">Volunteer</a></li>
+                            <li><a href="contact.html">Partner With Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hope & Harmony NGO. All rights reserved. Registered Charity No. 1234567.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../src/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Hope &amp; Harmony</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Return to Hope & Harmony.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+        body {
+            background: #0F1117;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Animated background */
+        .bg-orbs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.25;
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(217, 119, 6, 0.6), transparent);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(5, 150, 105, 0.5), transparent);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: -3s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.4), transparent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -6s;
+        }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        /* Grid lines */
+        .grid-lines {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Main content */
+        .notfound-wrap {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 24px;
+            max-width: 700px;
+        }
+
+        /* Floating icon */
+        .notfound-icon {
+            font-size: 5rem;
+            margin-bottom: 32px;
+            display: block;
+            animation: iconBob 3s ease-in-out infinite;
+        }
+
+        @keyframes iconBob {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-16px) rotate(5deg);
+            }
+        }
+
+        /* Headline */
+        .notfound-headline {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .notfound-headline em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .notfound-sub {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto 48px;
+        }
+
+        /* Action buttons */
+        .notfound-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn-notfound-home {
+            padding: 16px 36px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-notfound-home:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(217, 119, 6, 0.35);
+        }
+
+        .btn-notfound-ghost {
+            padding: 16px 36px;
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.75);
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-notfound-ghost:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* Quick links */
+        .quick-links-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .quick-links-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .quick-link-pill {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .quick-link-pill:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Brand watermark */
+        .brand-watermark {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            z-index: 10;
+        }
+
+        .brand-watermark:hover {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Particles */
+        .particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: rgba(217, 119, 6, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="grid-lines"></div>
+
+    <!-- Floating particles -->
+    <div class="particle" id="p1" style="top: 20%; left: 15%;"></div>
+    <div class="particle" id="p2" style="top: 70%; left: 80%;"></div>
+    <div class="particle" id="p3" style="top: 40%; left: 90%;"></div>
+    <div class="particle" id="p4" style="top: 80%; left: 20%;"></div>
+    <div class="particle" id="p5" style="top: 10%; left: 60%;"></div>
+
+    <!-- Main Content -->
+    <div class="notfound-wrap" id="notfoundContent">
+        <span class="notfound-icon">🧭</span>
+
+        <h1 class="notfound-headline">
+            Lost in the <em>Journey.</em>
+        </h1>
+
+        <p class="notfound-sub">
+            This page seems to have wandered off — much like the challenges we work to solve every day. Let's get you
+            back on track.
+        </p>
+
+        <div class="notfound-actions">
+            <a href="../index.html" class="btn-notfound-home">🏠 Return Home</a>
+            <a href="../pages/contact.html" class="btn-notfound-ghost">Contact Us</a>
+        </div>
+
+        <div class="quick-links-label">Or explore</div>
+        <div class="quick-links-row">
+            <a href="../pages/about.html" class="quick-link-pill">About Us</a>
+            <a href="../pages/services.html" class="quick-link-pill">Our Causes</a>
+            <a href="../pages/blog.html" class="quick-link-pill">Impact Stories</a>
+            <a href="../pages/pricing.html" class="quick-link-pill">Donate</a>
+            <a href="../auth/login.html" class="quick-link-pill">Sign In</a>
+        </div>
+    </div>
+
+    <a href="../index.html" class="brand-watermark">Hope &amp; Harmony</a>
+
+    <script>
+        // GSAP entrance animations
+        const tl = gsap.timeline();
+
+        tl.from('.notfound-icon', { y: -40, opacity: 0, duration: 0.8, ease: 'back.out(1.7)' })
+            .from('.notfound-headline', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+            .from('.notfound-sub', { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.4')
+            .from('.notfound-actions', { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+            .from('.quick-links-label, .quick-links-row', { y: 20, opacity: 0, duration: 0.5, ease: 'power3.out' }, '-=0.2');
+
+        // Animate particles
+        document.querySelectorAll('.particle').forEach((p, i) => {
+            gsap.to(p, {
+                y: -60 - i * 20,
+                x: (i % 2 === 0 ? 1 : -1) * (20 + i * 10),
+                opacity: 0,
+                duration: 3 + i * 0.5,
+                repeat: -1,
+                delay: i * 0.4,
+                ease: 'power1.inOut',
+                yoyo: false,
+                onRepeat: function () {
+                    gsap.set(p, { opacity: 0.6, y: 0, x: 0 });
+                }
+            });
+        });
+
+        // Orb parallax on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 30;
+            const y = (e.clientY / window.innerHeight - 0.5) * 30;
+            gsap.to('.orb-1', { x: x * 0.5, y: y * 0.5, duration: 1.5, ease: 'power2.out' });
+            gsap.to('.orb-2', { x: -x * 0.3, y: -y * 0.3, duration: 1.5, ease: 'power2.out' });
+            gsap.to('.orb-3', { x: x * 0.2, y: y * 0.2, duration: 1.5, ease: 'power2.out' });
+        });
+    </script>
+</body>
+
+</html>

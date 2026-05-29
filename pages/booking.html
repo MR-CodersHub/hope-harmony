@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Visit | Hope &amp; Harmony</title>
+    <meta name="description"
+        content="Book a volunteer session, site visit, or consultation with Hope & Harmony. Join us in making a difference.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+        /* ── BOOKING PAGE ── */
+
+        /* Progress Bar */
+        .booking-progress {
+            position: sticky;
+            top: 72px;
+            z-index: 500;
+            background: rgba(253, 252, 251, 0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 20px 0;
+
+        }
+
+        .progress-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            flex: 1;
+            position: relative;
+        }
+
+        .progress-step::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 0, 0, 0.08);
+            z-index: -1;
+        }
+
+        .progress-step:last-child::after {
+            display: none;
+        }
+
+        .step-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-step.active .step-circle,
+        .progress-step.done .step-circle {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .progress-step.done .step-circle::after {
+            content: '✓';
+        }
+
+        .step-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .progress-step.active .step-label {
+            color: var(--primary);
+        }
+
+        /* Booking Hero */
+        .booking-hero {
+            background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
+            color: #fafafa;
+            padding: 160px 0 80px;
+            text-align: center;
+        }
+
+        .booking-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .booking-hero p {
+            font-size: 1.1rem;
+            color: white;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* Booking Container */
+        .booking-section {
+            padding: 80px 0 120px;
+            background: var(--bg-light);
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Form Steps */
+        .booking-form-wrap {
+            background: #fff;
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .booking-step {
+            display: none;
+        }
+
+        .booking-step.active {
+            display: block;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-heading {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .step-subheading {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+        }
+
+        /* Type Cards */
+        .type-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .type-card {
+            padding: 24px 20px;
+            border: 2px solid rgba(0, 0, 0, 0.08);
+            border-radius: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .type-card:hover {
+            border-color: var(--primary);
+            background: rgba(217, 119, 6, 0.03);
+        }
+
+        .type-card.selected {
+            border-color: var(--primary);
+            background: rgba(217, 119, 6, 0.06);
+        }
+
+        .type-card .type-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .type-card .type-name {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .type-card .type-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Form Fields */
+        .form-field {
+            margin-bottom: 20px;
+        }
+
+        .form-field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1.5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background: #fafafa;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: var(--primary);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.08);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* Navigation Buttons */
+        .step-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 36px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-step-back {
+            padding: 14px 28px;
+            border: 1.5px solid rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+            background: transparent;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .btn-step-back:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
+
+        .btn-step-next {
+            padding: 14px 32px;
+            background: var(--primary);
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-step-next:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(217, 119, 6, 0.25);
+        }
+
+        /* Success State */
+        .booking-success {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(5, 150, 105, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 24px;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Sidebar Info */
+        .booking-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .booking-info-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .booking-info-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item .info-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .info-item .info-text .info-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .info-item .info-text .info-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            line-height: 1.5;
+        }
+
+        .booking-cta-card {
+            background: var(--text-main);
+            border-radius: 20px;
+            padding: 28px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .booking-cta-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .booking-cta-card p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .btn-cta-donate {
+            display: block;
+            padding: 14px 24px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta-donate:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-sidebar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .booking-form-wrap {
+                padding: 32px 24px;
+            }
+
+            .type-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ── HEADER ── -->
+    <header class="header-standard page-grey-nav scrolled" id="mainHeader">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo text-serif" style="color: var(--text-main);">Hope &amp; Harmony</a>
+            <nav class="standard-links" id="mainNav" style="display: flex;">
+                <a href="../index.html" style="color: var(--text-main);">Home</a>
+                <a href="about.html" style="color: var(--text-main);">About</a>
+                <a href="services.html" style="color: var(--text-main);">Services</a>
+                <a href="blog.html" style="color: var(--text-main);">Blog</a>
+                <a href="contact.html" style="color: var(--text-main);">Contact</a>
+                <a href="pricing.html" class="nav-donate-btn">Donate</a>
+            </nav>
+            <div class="login-dropdown-wrap" id="loginDropWrap">
+                <button class="login-icon-btn" id="loginIconBtn" aria-label="Account" aria-expanded="false"
+                    aria-haspopup="true" style="color: var(--text-main);">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                    </svg>
+                </button>
+                <div class="login-dropdown" id="loginDropdown" role="menu">
+                    <a href="../auth/login.html" role="menuitem">
+                        <span class="dd-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                <polyline points="10 17 15 12 10 7"></polyline>
+                                <line x1="15" y1="12" x2="3" y2="12"></line>
+                            </svg>
+                        </span>
+                        Login
+                    </a>
+                    <a href="../auth/signup.html" role="menuitem">
+                        <span class="dd-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <line x1="19" y1="8" x2="19" y2="14"></line>
+                                <line x1="22" y1="11" x2="16" y2="11"></line>
+                            </svg>
+                        </span>
+                        Sign Up
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-links">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="pricing.html">Donate</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Progress Bar -->
+        <div class="booking-progress">
+            <div class="container">
+                <div class="progress-steps">
+                    <div class="progress-step active" id="step-indicator-1">
+                        <div class="step-circle">1</div>
+                        <span class="step-label">Choose Type</span>
+                    </div>
+                    <div class="progress-step" id="step-indicator-2">
+                        <div class="step-circle">2</div>
+                        <span class="step-label">Your Details</span>
+                    </div>
+                    <div class="progress-step" id="step-indicator-3">
+                        <div class="step-circle">3</div>
+                        <span class="step-label">Confirm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Form -->
+        <section class="booking-section">
+            <div class="container">
+                <div class="booking-grid">
+                    <!-- Form -->
+                    <div class="booking-form-wrap">
+                        <!-- Step 1: Type Selection -->
+                        <div class="booking-step active" id="step1">
+                            <h2 class="step-heading">What brings you here?</h2>
+                            <p class="step-subheading">Choose the type of engagement you'd like to book.</p>
+
+                            <div class="type-cards">
+                                <div class="type-card" onclick="selectType(this, 'Volunteer Session')">
+                                    <div class="type-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="9" cy="7" r="4"></circle>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="type-name">Volunteer Session</div>
+                                    <div class="type-desc">Join our team on the ground for a hands-on experience</div>
+                                </div>
+                                <div class="type-card" onclick="selectType(this, 'Project Site Visit')">
+                                    <div class="type-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                                            <path
+                                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="type-name">Site Visit</div>
+                                    <div class="type-desc">See our projects in action and meet the communities</div>
+                                </div>
+                                <div class="type-card" onclick="selectType(this, 'Donor Consultation')">
+                                    <div class="type-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="type-name">Consultation</div>
+                                    <div class="type-desc">Speak with our team about partnerships or major gifts</div>
+                                </div>
+                                <div class="type-card" onclick="selectType(this, 'Corporate Partnership')">
+                                    <div class="type-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="type-name">Corporate Partner</div>
+                                    <div class="type-desc">Explore CSR opportunities and corporate giving programs</div>
+                                </div>
+                            </div>
+
+                            <div class="step-nav" style="justify-content: flex-end;">
+                                <button class="btn-step-next" onclick="nextStep(1)">Continue →</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Details -->
+                        <div class="booking-step" id="step2">
+                            <h2 class="step-heading">Your Details</h2>
+                            <p class="step-subheading">Tell us a bit about yourself so we can prepare for your visit.
+                            </p>
+
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="bookFirstName">First Name *</label>
+                                    <input type="text" id="bookFirstName" placeholder="Amina" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="bookLastName">Last Name *</label>
+                                    <input type="text" id="bookLastName" placeholder="Hassan" required>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="bookEmail">Email Address *</label>
+                                <input type="email" id="bookEmail" placeholder="amina@example.com" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="bookPhone">Phone Number</label>
+                                <input type="tel" id="bookPhone" placeholder="+1 234 567 8900">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="bookDate">Preferred Date *</label>
+                                    <input type="date" id="bookDate" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="bookTime">Preferred Time *</label>
+                                    <select id="bookTime" required>
+                                        <option value="" disabled selected>Select time</option>
+                                        <option>9:00 AM</option>
+                                        <option>10:00 AM</option>
+                                        <option>11:00 AM</option>
+                                        <option>2:00 PM</option>
+                                        <option>3:00 PM</option>
+                                        <option>4:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="bookMessage">Additional Notes</label>
+                                <textarea id="bookMessage" rows="4"
+                                    placeholder="Tell us anything else we should know…"></textarea>
+                            </div>
+
+                            <div class="step-nav">
+                                <button class="btn-step-back" onclick="prevStep(2)">← Back</button>
+                                <button class="btn-step-next" onclick="nextStep(2)">Review Booking →</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Confirm -->
+                        <div class="booking-step" id="step3">
+                            <h2 class="step-heading">Review &amp; Confirm</h2>
+                            <p class="step-subheading">Please review your booking details before confirming.</p>
+
+                            <div
+                                style="background: var(--bg-light); border-radius: 16px; padding: 24px; margin-bottom: 28px;">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                    <div>
+                                        <div
+                                            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px;">
+                                            Booking Type</div>
+                                        <div style="font-weight: 600;" id="confirmType">Volunteer Session</div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px;">
+                                            Name</div>
+                                        <div style="font-weight: 600;" id="confirmName">—</div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px;">
+                                            Email</div>
+                                        <div style="font-weight: 600;" id="confirmEmail">—</div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px;">
+                                            Date &amp; Time</div>
+                                        <div style="font-weight: 600;" id="confirmDateTime">—</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                style="background: rgba(217,119,6,0.06); border-left: 3px solid var(--primary); padding: 16px 20px; border-radius: 0 12px 12px 0; margin-bottom: 28px;">
+                                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">You'll
+                                    receive a confirmation email within 24 hours. Our team will reach out to finalize
+                                    the details of your visit.</p>
+                            </div>
+
+                            <div class="step-nav">
+                                <button class="btn-step-back" onclick="prevStep(3)">← Back</button>
+                                <button class="btn-step-next" onclick="submitBooking()" id="confirmBtn">Confirm Booking
+                                    ✓</button>
+                            </div>
+                        </div>
+
+                        <!-- Success -->
+                        <div class="booking-step" id="stepSuccess">
+                            <div class="booking-success">
+                                <div class="success-icon">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                                <h2 class="step-heading">Booking Confirmed!</h2>
+                                <p
+                                    style="color: var(--text-muted); max-width: 400px; margin: 0 auto 32px; line-height: 1.7;">
+                                    Thank you! We've received your booking and will send a confirmation to your email
+                                    within 24 hours.</p>
+                                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                                    <a href="../index.html" class="btn-step-next"
+                                        style="text-decoration: none; display: inline-block;">Return Home</a>
+                                    <a href="pricing.html" class="btn-step-back"
+                                        style="text-decoration: none; display: inline-block;">Donate Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="booking-sidebar">
+                        <div class="booking-info-card">
+                            <h3 class="text-serif">What to Expect</h3>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                        </path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="info-text">
+                                    <div class="info-title">Confirmation Email</div>
+                                    <div class="info-desc">You'll receive a detailed confirmation within 24 hours</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="info-text">
+                                    <div class="info-title">Pre-Visit Call</div>
+                                    <div class="info-desc">Our team will call 48 hours before to prepare you</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <circle cx="12" cy="12" r="6"></circle>
+                                        <circle cx="12" cy="12" r="2"></circle>
+                                    </svg>
+                                </div>
+                                <div class="info-text">
+                                    <div class="info-title">Tailored Experience</div>
+                                    <div class="info-desc">Every visit is customized to your interests and goals</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path
+                                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="info-text">
+                                    <div class="info-title">Real Impact</div>
+                                    <div class="info-desc">See firsthand how your support changes lives</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="booking-cta-card">
+                            <h3 class="text-serif">Can't Wait?</h3>
+                            <p>Make an immediate impact by donating to one of our six active causes right now.</p>
+                            <a href="pricing.html" class="btn-cta-donate"
+                                style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                    </path>
+                                </svg>
+                                Donate Today
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer section">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo text-serif">Hope &amp; Harmony</a>
+                    <p>Building sustainable futures through compassion and action.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="nav-group">
+                        <h4>Explore</h4>
+                        <ul>
+                            <li><a href="about.html">Our Story</a></li>
+                            <li><a href="services.html">Causes</a></li>
+                            <li><a href="blog.html">Impact Stories</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="../auth/login.html">Donor Portal</a></li>
+                            <li><a href="pricing.html">Donate</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hope &amp; Harmony NGO. All rights reserved.</p>
+                <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        let selectedType = '';
+
+        function selectType(el, type) {
+            document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedType = type;
+        }
+
+        function nextStep(from) {
+            if (from === 1 && !selectedType) {
+                alert('Please select a booking type to continue.');
+                return;
+            }
+            if (from === 2) {
+                const firstName = document.getElementById('bookFirstName').value.trim();
+                const email = document.getElementById('bookEmail').value.trim();
+                const date = document.getElementById('bookDate').value;
+                const time = document.getElementById('bookTime').value;
+                if (!firstName || !email || !date || !time) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                // Populate confirm
+                document.getElementById('confirmType').textContent = selectedType;
+                document.getElementById('confirmName').textContent = firstName + ' ' + document.getElementById('bookLastName').value;
+                document.getElementById('confirmEmail').textContent = email;
+                document.getElementById('confirmDateTime').textContent = date + ' at ' + time;
+            }
+            goToStep(from + 1);
+        }
+
+        function prevStep(from) {
+            goToStep(from - 1);
+        }
+
+        function goToStep(step) {
+            document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            currentStep = step;
+            updateProgress(step);
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+        }
+
+        function updateProgress(step) {
+            for (let i = 1; i <= 3; i++) {
+                const indicator = document.getElementById('step-indicator-' + i);
+                indicator.classList.remove('active', 'done');
+                if (i < step) indicator.classList.add('done');
+                else if (i === step) indicator.classList.add('active');
+            }
+        }
+
+        function submitBooking() {
+            const btn = document.getElementById('confirmBtn');
+            btn.textContent = 'Confirming…';
+            btn.disabled = true;
+            setTimeout(() => {
+                document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+                document.getElementById('stepSuccess').classList.add('active');
+                document.querySelectorAll('.progress-step').forEach(s => s.classList.add('done'));
+            }, 1200);
+        }
+
+        // GSAP entrance
+        gsap.from('.booking-hero .reveal', { y: 40, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
+    </script>
+    <script src="../src/js/main.js"></script>
+</body>
+
+</html>

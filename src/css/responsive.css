@@ -1,0 +1,393 @@
+/* ============================================================
+   HOPE & HARMONY NGO — PROFESSIONAL RESPONSIVE DESIGN (MOBILE-FIRST)
+   ============================================================ */
+
+/* ========== MOBILE FIRST DEFAULT (0 – 575px) ========== */
+
+:root {
+    --container-width: 100%;
+    --section-padding: 60px 0;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+/* Typography Scaling */
+h1 {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+}
+
+p {
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    line-height: 1.6;
+}
+
+/* Global Image Rule */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Buttons on Mobile */
+.btn-magnetic {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 16px 24px;
+    margin-bottom: 12px;
+}
+
+.hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
+/* Navigation */
+.standard-links {
+    display: none !important;
+}
+
+.hamburger {
+    display: flex !important;
+}
+
+.mobile-nav-overlay.open {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--text-main);
+    z-index: 1000;
+}
+
+/* Hero Section - Base (Mobile) */
+.horizon-hero {
+    height: 100vh !important;
+    padding-top: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-split-container {
+    height: 100% !important;
+    width: 100% !important;
+    flex-direction: row !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+
+.hero-side {
+    width: 50% !important;
+    height: 100% !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content-immersive {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    padding: 28px !important;
+    text-align: center;
+    width: 95% !important;
+    max-width: 100% !important;
+    z-index: 10;
+}
+
+.hero-content-immersive h1 {
+    font-size: clamp(2rem, 9vw, 3.2rem) !important;
+}
+
+.hero-content-immersive p {
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Horizontal Scroll Projects (Converted to Vertical) */
+.horizontal-scroll-container {
+    height: auto !important;
+    overflow: visible !important;
+    background: var(--text-main);
+    padding: 80px 0;
+}
+
+.horizontal-inner {
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 0 20px !important;
+    gap: 60px !important;
+}
+
+.horizontal-item {
+    width: 100% !important;
+    flex-shrink: 1 !important;
+}
+
+.item-visual {
+    height: 300px !important;
+}
+
+/* Grids → Single Column */
+.metrics-inner,
+.about-split-grid,
+.services-depth-grid,
+.services-secondary-row,
+.masonry-stories-grid,
+.contact-v2-grid,
+.stats-row,
+.footer-top,
+.about-timeline,
+.timeline-track {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+}
+
+.metric-divider {
+    display: none;
+}
+
+.about-visual-col {
+    order: -1;
+}
+
+.image-stack-v2 {
+    height: 400px;
+}
+
+.about-badge {
+    left: 0;
+    bottom: 20px;
+}
+
+/* Impact Calculator */
+.calc-wrapper {
+    grid-template-columns: 1fr !important;
+    padding: 40px 20px !important;
+}
+
+.calc-visual {
+    display: none;
+}
+
+.calc-results {
+    grid-template-columns: 1fr !important;
+}
+
+/* Testimonials */
+.testimonial-slider .slide {
+    padding: 0;
+}
+
+.quote-text {
+    font-size: 1.4rem !important;
+}
+
+.author-info {
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Footer */
+.footer-nav-groups {
+    flex-direction: column;
+    gap: 30px;
+}
+
+.footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}
+
+/* ========== Small Tablet (≥576px) ========== */
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .metrics-inner {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* ========== Tablet (≥768px) ========== */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    /* Navigation */
+    .standard-links {
+        display: flex !important;
+    }
+
+    .hamburger {
+        display: none !important;
+    }
+
+    /* Hero Typography */
+    .hero-content-immersive h1 {
+        font-size: clamp(3rem, 7vw, 4.5rem) !important;
+    }
+
+    .hero-content-immersive p {
+        font-size: 1.2rem !important;
+    }
+
+    /* Grids → 2 Columns */
+    .services-depth-grid,
+    .masonry-stories-grid,
+    .about-split-grid,
+    .contact-v2-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .services-secondary-row {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .timeline-track {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .calc-results {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* ========== Laptop (≥992px) ========== */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    /* Re-enable Horizontal Scroll */
+    .horizontal-scroll-container {
+        height: 100vh !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .horizontal-inner {
+        flex-direction: row !important;
+        width: fit-content !important;
+        gap: 120px !important;
+        padding: 0 10vw !important;
+    }
+
+    .horizontal-item {
+        width: 500px !important;
+    }
+
+    /* Grids → 3/4 Columns */
+    .services-depth-grid,
+    .masonry-stories-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .services-secondary-row {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    .timeline-track {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    .metrics-inner {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    .footer-top {
+        display: grid !important;
+        grid-template-columns: 1fr 2fr !important;
+    }
+
+    .footer-nav-groups {
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 80px;
+    }
+}
+
+/* ========== Desktop (≥1200px) ========== */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .hero-content-immersive h1 {
+        font-size: 5.5rem;
+    }
+
+    .about-split-grid {
+        grid-template-columns: 1fr 1.1fr !important;
+        gap: 100px !important;
+    }
+}
+
+/* ========== Large Screens (≥1400px) ========== */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+
+    .hero-content-immersive h1 {
+        font-size: 6.5rem;
+    }
+}
+
+/* Fix for Button Full Width reset on Desktop */
+@media (min-width: 768px) {
+    .btn-magnetic {
+        width: auto;
+        display: inline-block;
+    }
+
+    .hero-cta-group {
+        flex-direction: row;
+        width: auto;
+        justify-content: center;
+    }
+}

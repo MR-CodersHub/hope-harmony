@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Stories | Hope & Harmony</title>
+    <meta name="description"
+        content="Read real stories of transformation from Hope & Harmony's work across education, healthcare, sustainability, and community development.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        /* Soft grey-blue navbar for Blog & Contact pages */
+        .page-grey-nav {
+            background: rgba(226, 232, 240, 0.97) !important;
+            backdrop-filter: blur(16px) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06) !important;
+        }
+
+        .page-grey-nav .logo,
+        .page-grey-nav .standard-links a {
+            color: var(--text-main) !important;
+        }
+
+        .page-grey-nav .login-icon-btn {
+            color: var(--text-main) !important;
+        }
+
+        .page-grey-nav .hamburger span {
+            background: var(--text-main) !important;
+        }
+
+        .page-grey-nav.scrolled {
+            background: rgba(210, 218, 230, 0.98) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header-standard page-grey-nav" id="mainHeader">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
+            <nav class="standard-links" id="mainNav">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="contact.html">Contact</a>
+                <a href="pricing.html" class="nav-donate-btn">Donate</a>
+            </nav>
+            <div class="login-dropdown-wrap" id="loginDropWrap">
+                <button class="login-icon-btn" id="loginIconBtn" aria-label="Account" aria-expanded="false"
+                    aria-haspopup="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                    </svg>
+                </button>
+                <div class="login-dropdown" id="loginDropdown" role="menu">
+                    <a href="../auth/login.html" role="menuitem">
+                        <span class="dd-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                <polyline points="10 17 15 12 10 7"></polyline>
+                                <line x1="15" y1="12" x2="3" y2="12"></line>
+                            </svg>
+                        </span>
+                        Login
+                    </a>
+                    <a href="../auth/signup.html" role="menuitem">
+                        <span class="dd-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <line x1="19" y1="8" x2="19" y2="14"></line>
+                                <line x1="22" y1="11" x2="16" y2="11"></line>
+                            </svg>
+                        </span>
+                        Sign Up
+                    </a>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-links">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="pricing.html" class="nav-donate-btn">Donate</a>
+            <a href="../auth/login.html">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                    <polyline points="10 17 15 12 10 7"></polyline>
+                    <line x1="15" y1="12" x2="3" y2="12"></line>
+                </svg>
+                Login
+            </a>
+            <a href="../auth/signup.html">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <line x1="19" y1="8" x2="19" y2="14"></line>
+                    <line x1="22" y1="11" x2="16" y2="11"></line>
+                </svg>
+                Sign Up
+            </a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ===== FEATURED STORY ===== -->
+        <section class="featured-story section bg-light">
+            <div class="container">
+                <div class="featured-grid reveal">
+                    <div class="featured-content">
+                        <span class="category">Featured Story</span>
+                        <h1 class="text-serif">The Girl who <br><span class="text-italic text-primary">Changed a
+                                Village.</span></h1>
+                        <p>Amina was the first girl in her rural community to attend university. Today, she's back,
+                            building sustainable water systems for her family and neighbors — and inspiring a generation
+                            of young women to dream bigger.</p>
+                        <a href="blog-details.html" class="btn-primary"
+                            style="display: inline-block; margin-top: 8px;">Read Amina's Story</a>
+                    </div>
+                    <div class="featured-image">
+                        <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=2070&auto=format&fit=crop"
+                            alt="Amina's Story">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FILTER + MASONRY GRID ===== -->
+        <section class="stories-grid-section section bg-white">
+            <div class="container">
+                <div class="section-label reveal">
+                    <span class="label-line"></span>
+                    <span class="label-text">All Stories</span>
+                </div>
+
+                <div class="masonry-blog-grid">
+                    <article class="blog-v2-card reveal">
+                        <div class="blog-v2-img">
+                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop"
+                                alt="Education">
+                        </div>
+                        <div class="blog-v2-content">
+                            <span class="category">Education</span>
+                            <h3 class="text-serif">Solar Schools in the Savannah</h3>
+                            <p>How we are bringing digital education to off-grid regions across three countries.</p>
+                            <div class="blog-meta">
+                                <span>5 min read · Jan 2026</span>
+                                <a href="blog-details.html" class="link-arrow"></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-v2-card reveal">
+                        <div class="blog-v2-img">
+                            <img src="../asset/relay img.jpg" alt="Healthcare">
+                        </div>
+                        <div class="blog-v2-content">
+                            <span class="category">Healthcare</span>
+                            <h3 class="text-serif">The Vaccine Relay</h3>
+                            <p>The logistical miracle of reaching 50 villages during the raining season with life-saving
+                                vaccines.</p>
+                            <div class="blog-meta">
+                                <span>8 min read · Dec 2025</span>
+                                <a href="blog-details.html" class="link-arrow"></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-v2-card reveal">
+                        <div class="blog-v2-img">
+                            <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1931&auto=format&fit=crop"
+                                alt="Community">
+                        </div>
+                        <div class="blog-v2-content">
+                            <span class="category">Success</span>
+                            <h3 class="text-serif">Roots of Resilience</h3>
+                            <p>Meet the farmers turning desert land into fertile green oases through regenerative
+                                agriculture.</p>
+                            <div class="blog-meta">
+                                <span>6 min read · Nov 2025</span>
+                                <a href="blog-details.html" class="link-arrow"></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-v2-card reveal">
+                        <div class="blog-v2-img">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop"
+                                alt="Education">
+                        </div>
+                        <div class="blog-v2-content">
+                            <span class="category">Education</span>
+                            <h3 class="text-serif">The School Under the Baobab Tree</h3>
+                            <p>A single classroom in rural Ghana became a beacon of hope for 500 children.</p>
+                            <div class="blog-meta">
+                                <span>7 min read · Oct 2025</span>
+                                <a href="blog-details.html" class="link-arrow"></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-v2-card reveal">
+                        <div class="blog-v2-img">
+                            <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?q=80&w=1974&auto=format&fit=crop"
+                                alt="Healthcare">
+                        </div>
+                        <div class="blog-v2-content">
+                            <span class="category">Healthcare</span>
+                            <h3 class="text-serif">A Breath of Hope</h3>
+                            <p>Mobile clinics bring life-saving respiratory care to 10,000 people in the highlands.</p>
+                            <div class="blog-meta">
+                                <span>4 min read · Sep 2025</span>
+                                <a href="blog-details.html" class="link-arrow"></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-v2-card reveal">
+                        <div class="blog-v2-img">
+                            <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=1974&auto=format&fit=crop"
+                                alt="Sustainability">
+                        </div>
+                        <div class="blog-v2-content">
+                            <span class="category">Sustainability</span>
+                            <h3 class="text-serif">Harvesters of Change</h3>
+                            <p>How 200 families transformed barren land into thriving farms using ancient techniques.
+                            </p>
+                            <div class="blog-meta">
+                                <span>9 min read · Aug 2025</span>
+                                <a href="blog-details.html" class="link-arrow"></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== NEWSLETTER ===== -->
+        <section class="section bg-dark text-white" style="text-align: center;">
+            <div class="container">
+                <div class="reveal">
+                    <h2 class="text-serif" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px;">Stay <span
+                            class="text-italic" style="color: var(--primary-light);">Inspired.</span></h2>
+                    <p style="color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto 40px;">Get the latest
+                        impact stories, project updates, and volunteer opportunities delivered to your inbox.</p>
+                    <form style="display: flex; gap: 12px; max-width: 480px; margin: 0 auto;" onsubmit="return false;">
+                        <input type="email" placeholder="Your email address"
+                            style="flex: 1; padding: 16px 20px; border-radius: 12px; border: none; font-family: var(--font-sans); font-size: 0.95rem; outline: none;">
+                        <button type="submit" class="btn-magnetic"
+                            style="white-space: nowrap; padding: 16px 28px;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
+                    <p>Building sustainable futures through compassion, action, and radical transparency.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="nav-group">
+                        <h4>Explore</h4>
+                        <ul>
+                            <li><a href="about.html">Our Story</a></li>
+                            <li><a href="services.html">Causes</a></li>
+                            <li><a href="blog.html">Impact Stories</a></li>
+                            <li><a href="pricing.html">Donate</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="../auth/login.html">Donor Portal</a></li>
+                            <li><a href="contact.html">Volunteer</a></li>
+                            <li><a href="contact.html">Partner With Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hope & Harmony NGO. All rights reserved. Registered Charity No. 1234567.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../src/js/main.js"></script>
+</body>
+
+</html>

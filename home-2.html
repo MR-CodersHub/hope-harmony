@@ -1,0 +1,761 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Hope & Harmony</title>
+    <meta name="description"
+        content="Learn about Hope & Harmony's mission, vision, values, and the six core causes driving change across 50+ countries.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/responsive.css">
+    <style>
+        /* ── HOME-2 SPECIFIC STYLES ── */
+        .h2-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #1a2332 0%, #243447 60%, #1a2e22 100%);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .h2-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            opacity: 0.12;
+        }
+
+        .h2-hero-inner {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .h2-hero-text h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .h2-hero-text p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.8;
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .h2-hero-stats {
+            display: flex;
+            gap: 40px;
+            padding-top: 36px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .h2-stat-item {
+            text-align: center;
+        }
+
+        .h2-stat-item .num {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .h2-stat-item span:last-child {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .h2-hero-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .h2-hero-visual img {
+            border-radius: 16px;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .h2-hero-visual img:nth-child(2) {
+            margin-top: 32px;
+        }
+
+        .h2-hero-visual img:nth-child(3) {
+            margin-top: -32px;
+        }
+
+        /* Values Block */
+        .values-block {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            padding: 40px 32px;
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Mission Strip */
+        .mission-strip {
+            background: var(--primary);
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .mission-strip h2 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.4;
+        }
+
+        .mission-strip p {
+            font-size: 1rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services Overview */
+        .services-overview {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .services-overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .svc-overview-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.35s ease;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .svc-overview-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .svc-card-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .svc-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .svc-overview-card:hover .svc-card-img img {
+            transform: scale(1.08);
+        }
+
+        .svc-card-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .svc-card-body {
+            padding: 24px;
+        }
+
+        .svc-card-body h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .svc-card-body p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .svc-card-link {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Impact Numbers */
+        .impact-numbers {
+            padding: 100px 0;
+            background: #111;
+            color: #fff;
+        }
+
+        .impact-numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            text-align: center;
+        }
+
+        .impact-num-item {
+            padding: 40px 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .impact-num-item:last-child {
+            border-right: none;
+        }
+
+        .impact-num-item .big-num {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 8px;
+        }
+
+        .impact-num-item p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.55);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CTA Banner */
+        .h2-cta-banner {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .h2-cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb8?q=80&w=2070&auto=format&fit=crop') center/cover;
+            opacity: 0.1;
+        }
+
+        .h2-cta-banner>.container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .h2-cta-banner h2 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin-bottom: 20px;
+        }
+
+        .h2-cta-banner p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .h2-cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: #fff;
+            color: var(--primary);
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline-white {
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: #fff;
+            padding: 14px 34px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .h2-hero-inner {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .h2-hero-visual {
+                display: none;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-overview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .impact-numbers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .impact-num-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .h2-hero {
+                padding: 120px 0 60px;
+            }
+
+            .h2-hero-stats {
+                gap: 24px;
+                flex-wrap: wrap;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-numbers-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .h2-hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .impact-numbers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .h2-cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header-standard scrolled" id="mainHeader">
+        <div class="container nav-container">
+            <a href="index.html" class="logo text-serif" style="color: var(--text-main);">Hope & Harmony</a>
+            <nav class="standard-links" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="home-2.html" class="active">Our Story</a>
+                <a href="pages/services.html">Services</a>
+                <a href="pages/blog.html">Blog</a>
+                <a href="pages/contact.html">Contact</a>
+                <a href="pages/pricing.html" class="nav-donate-btn">Donate</a>
+            </nav>
+            <!-- Login Dropdown -->
+            <div class="login-dropdown-wrap" id="loginDropWrap">
+                <button class="login-icon-btn" id="loginIconBtn" aria-label="Account" aria-expanded="false"
+                    aria-haspopup="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                    </svg>
+                </button>
+                <div class="login-dropdown" id="loginDropdown" role="menu">
+                    <a href="auth/login.html" role="menuitem">
+                        <span class="dd-icon">🔑</span> Login
+                    </a>
+                    <a href="auth/signup.html" role="menuitem">
+                        <span class="dd-icon">✨</span> Sign Up
+                    </a>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-links">
+            <a href="index.html">Home</a>
+            <a href="home-2.html">Our Story</a>
+            <a href="pages/services.html">Services</a>
+            <a href="pages/blog.html">Blog</a>
+            <a href="pages/contact.html">Contact</a>
+            <a href="pages/pricing.html">Donate</a>
+            <a href="auth/login.html">Login</a>
+            <a href="auth/signup.html">Sign Up</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ===== COMPACT HERO ===== -->
+        <section class="h2-hero">
+            <div class="container">
+                <div class="h2-hero-inner">
+                    <div class="h2-hero-text">
+                        <div class="section-label reveal" style="margin-bottom: 20px;">
+                            <span class="label-line" style="background: rgba(255,255,255,0.3);"></span>
+                            <span class="label-text" style="color: rgba(255,255,255,0.6);">Our Mission</span>
+                        </div>
+                        <h1 class="text-serif reveal">
+                            Building a World <br>Where <span class="text-italic" style="color: var(--primary-light);">No
+                                One</span> <br>is Left Behind.
+                        </h1>
+                        <p class="reveal">Hope & Harmony is a global NGO dedicated to breaking the cycle of poverty
+                            through education, clean water, healthcare, and sustainable development — one community at a
+                            time.</p>
+                        <div class="hero-cta-group reveal" style="opacity: 1; transform: none;">
+                            <a href="pages/pricing.html" class="btn-magnetic">Donate Today</a>
+                            <a href="pages/services.html" class="btn-magnetic outline">Our Causes</a>
+                        </div>
+                        <div class="h2-hero-stats reveal">
+                            <div class="h2-stat-item">
+                                <span class="num count-value" data-target="2000000">0</span>
+                                <span>Lives Touched</span>
+                            </div>
+                            <div class="h2-stat-item">
+                                <span class="num count-value" data-target="50">0</span>
+                                <span>Countries</span>
+                            </div>
+                            <div class="h2-stat-item">
+                                <span class="num count-value" data-target="20">0</span>
+                                <span>Years Active</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h2-hero-visual reveal">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop"
+                            alt="Education">
+                        <img src="https://images.unsplash.com/photo-1504367625689-fdfdd0d63446?q=80&w=800&auto=format&fit=crop"
+                            alt="Water">
+                        <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb8?q=80&w=800&auto=format&fit=crop"
+                            alt="Community">
+                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop"
+                            alt="Climate">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MISSION STRIP ===== -->
+        <section class="mission-strip">
+            <div class="container">
+                <h2 class="text-serif reveal">"We don't just provide aid. We build systems of lasting change — with
+                    communities, not just for them."</h2>
+                <p class="reveal">— Elena Vance, Founder & CEO</p>
+            </div>
+        </section>
+
+        <!-- ===== VISION + VALUES ===== -->
+        <section class="values-block">
+            <div class="container">
+                <div class="section-label reveal">
+                    <span class="label-line"></span>
+                    <span class="label-text">Vision & Values</span>
+                </div>
+                <h2 class="text-serif reveal" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 8px;">What We
+                    <span class="text-italic text-primary">Stand For.</span></h2>
+                <p class="reveal" style="color: var(--text-muted); max-width: 600px; margin-bottom: 0;">Our values are
+                    not just words — they are the principles that guide every decision, every project, and every
+                    partnership.</p>
+                <div class="values-grid">
+                    <div class="value-card reveal">
+                        <span class="value-icon">🌍</span>
+                        <h3 class="text-serif">Global Solidarity</h3>
+                        <p>We believe every human being deserves dignity regardless of geography, ethnicity, or
+                            circumstance. Our work transcends borders.</p>
+                    </div>
+                    <div class="value-card reveal">
+                        <span class="value-icon">🔍</span>
+                        <h3 class="text-serif">Radical Transparency</h3>
+                        <p>90% of every dollar goes directly to projects. We publish quarterly impact reports and
+                            provide real-time tracking for donors.</p>
+                    </div>
+                    <div class="value-card reveal">
+                        <span class="value-icon">🤝</span>
+                        <h3 class="text-serif">Community-Led</h3>
+                        <p>We design programs with communities, not for them. Local knowledge, local leadership, and
+                            local ownership drive lasting change.</p>
+                    </div>
+                    <div class="value-card reveal">
+                        <span class="value-icon">♻️</span>
+                        <h3 class="text-serif">Sustainability First</h3>
+                        <p>Every initiative is built to outlast our involvement. We invest in skills, infrastructure,
+                            and systems that communities can maintain independently.</p>
+                    </div>
+                    <div class="value-card reveal">
+                        <span class="value-icon">📊</span>
+                        <h3 class="text-serif">Evidence-Based</h3>
+                        <p>We measure everything. Our programs are continuously evaluated and improved based on real
+                            data and community feedback.</p>
+                    </div>
+                    <div class="value-card reveal">
+                        <span class="value-icon">💡</span>
+                        <h3 class="text-serif">Innovation</h3>
+                        <p>From solar-powered schools to mobile clinics, we embrace technology and creative solutions to
+                            solve age-old problems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICES OVERVIEW ===== -->
+        <section class="services-overview">
+            <div class="container">
+                <div class="section-label reveal">
+                    <span class="label-line"></span>
+                    <span class="label-text">Core Causes</span>
+                </div>
+                <h2 class="text-serif reveal" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 8px;">Six Ways We
+                    <span class="text-italic text-primary">Change Lives.</span></h2>
+                <p class="reveal" style="color: var(--text-muted); max-width: 600px; margin-bottom: 0;">Each cause is a
+                    commitment — backed by programs, partnerships, and measurable outcomes.</p>
+                <div class="services-overview-grid">
+                    <a href="pages/services.html#education" class="svc-overview-card reveal">
+                        <div class="svc-card-img">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop"
+                                alt="Education">
+                            <span class="svc-card-badge">Education</span>
+                        </div>
+                        <div class="svc-card-body">
+                            <h3 class="text-serif">Classrooms of Change</h3>
+                            <p>Building schools, training teachers, and providing digital tools to 500,000 students
+                                across 30 countries.</p>
+                            <span class="svc-card-link">Explore →</span>
+                        </div>
+                    </a>
+                    <a href="pages/services.html#water" class="svc-overview-card reveal">
+                        <div class="svc-card-img">
+                            <img src="../ngo/asset/index img.jpg"
+                                alt="Water">
+                            <span class="svc-card-badge">Clean Water</span>
+                        </div>
+                        <div class="svc-card-body">
+                            <h3 class="text-serif">Water for Life</h3>
+                            <p>Drilling wells, building filtration systems, and ending the water crisis one village at a
+                                time.</p>
+                            <span class="svc-card-link">Explore →</span>
+                        </div>
+                    </a>
+                    <a href="pages/services.html#climate" class="svc-overview-card reveal">
+                        <div class="svc-card-img">
+                            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop"
+                                alt="Climate">
+                            <span class="svc-card-badge">Climate</span>
+                        </div>
+                        <div class="svc-card-body">
+                            <h3 class="text-serif">Green Earth Initiative</h3>
+                            <p>Reforesting degraded land and building climate-resilient communities for the future.</p>
+                            <span class="svc-card-link">Explore →</span>
+                        </div>
+                    </a>
+                    <a href="pages/services.html#healthcare" class="svc-overview-card reveal">
+                        <div class="svc-card-img">
+                            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=800&auto=format&fit=crop"
+                                alt="Healthcare">
+                            <span class="svc-card-badge">Healthcare</span>
+                        </div>
+                        <div class="svc-card-body">
+                            <h3 class="text-serif">Mobile Wellness</h3>
+                            <p>15 mobile clinics reaching 50,000 people in remote communities with essential medical
+                                care.</p>
+                            <span class="svc-card-link">Explore →</span>
+                        </div>
+                    </a>
+                    <a href="pages/services.html#empowerment" class="svc-overview-card reveal">
+                        <div class="svc-card-img">
+                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop"
+                                alt="Empowerment">
+                            <span class="svc-card-badge">Empowerment</span>
+                        </div>
+                        <div class="svc-card-body">
+                            <h3 class="text-serif">Women's Skills Academy</h3>
+                            <p>Vocational training and micro-financing for 2,000 women across South Asia and Africa.</p>
+                            <span class="svc-card-link">Explore →</span>
+                        </div>
+                    </a>
+                    <a href="pages/services.html#food" class="svc-overview-card reveal">
+                        <div class="svc-card-img">
+                            <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=800&auto=format&fit=crop"
+                                alt="Food">
+                            <span class="svc-card-badge">Food Security</span>
+                        </div>
+                        <div class="svc-card-body">
+                            <h3 class="text-serif">Regenerative Farms</h3>
+                            <p>Converting 500 acres of degraded land into productive farms feeding 10,000 families.</p>
+                            <span class="svc-card-link">Explore →</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA BANNER ===== -->
+        <section class="h2-cta-banner">
+            <div class="container">
+                <h2 class="text-serif reveal">Ready to Be Part of the <span class="text-italic">Change?</span></h2>
+                <p class="reveal">Join thousands of donors and volunteers who are transforming lives across the globe —
+                    one community at a time.</p>
+                <div class="h2-cta-group reveal">
+                    <a href="pages/pricing.html" class="btn-white">Donate Now</a>
+                    <a href="pages/services.html" class="btn-outline-white">Explore Causes</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer section">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo text-serif">Hope & Harmony</a>
+                    <p>Building sustainable futures through compassion, action, and radical transparency.</p>
+                    <div class="footer-social">
+                        <a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Twitter</a>
+                    </div>
+                </div>
+                <div class="footer-nav-groups">
+                    <div class="nav-group">
+                        <h4>Explore</h4>
+                        <ul>
+                            <li><a href="pages/about.html">Our Story</a></li>
+                            <li><a href="pages/services.html">Causes</a></li>
+                            <li><a href="pages/blog.html">Impact Stories</a></li>
+                            <li><a href="pages/pricing.html">Donate</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="pages/contact.html">Contact Us</a></li>
+                            <li><a href="auth/login.html">Login</a></li>
+                            <li><a href="auth/signup.html">Sign Up</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hope & Harmony NGO. All rights reserved.</p>
+                <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/js/main.js"></script>
+</body>
+
+</html>
