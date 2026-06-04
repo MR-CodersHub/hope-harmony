@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amina's Journey | Hope & Harmony</title>
+    <meta name="description"
+        content="Read Amina's inspiring journey of how access to clean water opened the doors of education and transformed her community.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        /* Blog details layout rules */
+        .blog-details-hero {
+            padding: 160px 0 60px;
+            background: var(--bg-light);
+            text-align: center;
+        }
+
+        .blog-meta-details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .blog-meta-details .author-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .blog-content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .blog-main-image {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .blog-text-rich p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-main);
+            margin-bottom: 28px;
+        }
+
+        .blog-text-rich blockquote {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-style: italic;
+            border-left: 4px solid var(--primary);
+            padding-left: 24px;
+            margin: 40px 0;
+            color: var(--primary-dark);
+            line-height: 1.6;
+        }
+
+        .blog-text-rich h3 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: var(--text-main);
+        }
+
+        .share-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 20px 0;
+            margin: 50px 0;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .share-btn {
+            background: none;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .share-btn:hover {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .donation-banner-card {
+            background: linear-gradient(135deg, var(--dark) 0%, rgba(26, 35, 50, 0.95) 100%);
+            color: var(--white);
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+            margin-top: 60px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-banner-card h3 {
+            color: var(--white);
+            margin-bottom: 16px;
+            font-size: 2rem;
+        }
+
+        .donation-banner-card p {
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 580px;
+            margin: 0 auto 32px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .related-stories-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            .blog-main-image {
+                height: 300px;
+            }
+            .donation-banner-card {
+                padding: 32px 20px;
+            }
+            .share-row {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header-standard page-grey-nav" id="mainHeader">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
+            <nav class="standard-links" id="mainNav">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="contact.html">Contact</a>
+                <a href="pricing.html" class="nav-donate-btn">Donate</a>
+            </nav>
+            <div class="login-dropdown-wrap" id="loginDropWrap">
+                <button class="login-icon-btn" id="loginIconBtn" aria-label="Account" aria-expanded="false"
+                    aria-haspopup="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                    </svg>
+                </button>
+                <div class="login-dropdown" id="loginDropdown" role="menu">
+                    <a href="../auth/login.html" role="menuitem">🔑 Login</a>
+                    <a href="../auth/signup.html" role="menuitem">✨ Sign Up</a>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-links">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="pricing.html">Donate</a>
+            <a href="../auth/login.html">Login</a>
+            <a href="../auth/signup.html">Sign Up</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="blog-details-hero">
+            <div class="container">
+                <div class="blog-meta-details">
+                    <span class="tag" style="background: rgba(217, 119, 6, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">Clean Water</span>
+                    <span>•</span>
+                    <span>January 15, 2026</span>
+                    <span>•</span>
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <img src="../asset/abo img.jpg" alt="Sarah Jenkins" class="author-img">
+                        By Sarah Jenkins
+                    </span>
+                </div>
+                <h1 class="text-serif" style="font-size: clamp(2.2rem, 5vw, 4rem); max-width: 900px; margin: 0 auto 24px; line-height: 1.15;">
+                    Amina's Journey: From Water Scarcity to the <span class="text-italic">Classroom.</span>
+                </h1>
+            </div>
+        </section>
+
+        <!-- ===== ARTICLE CONTENT ===== -->
+        <section class="blog-content-container bg-white">
+            <div class="container">
+                <div class="blog-content-body">
+                    <img src="https://images.unsplash.com/photo-1548932813-71ede393952d?q=80&w=1200&auto=format&fit=crop"
+                        alt="Clean Water Impact" class="blog-main-image">
+                    
+                    <div class="blog-text-rich">
+                        <p>For the first twelve years of her life, Amina’s daily routine was governed not by school bells, but by the weight of a yellow plastic jerrycan. Living in a remote community in the arid highlands of northern Kenya, she rose before dawn every day to begin a grueling six-kilometer trek to the nearest dry riverbed.</p>
+                        
+                        <p>“I used to wake up at 4:30 AM when it was still dark and cold,” Amina recalls. “The path was steep, and my feet would ache. If I didn't walk fast enough, the queue at the scoop well would be too long, and I would miss half of my morning chores. There was no time for school.”</p>
+                        
+                        <p>Amina was not alone. In her village, nearly all girls and women spent up to four hours daily fetching water that was often muddy and contaminated, causing waterborne illnesses. The cycle of water scarcity was a direct barrier to education, keeping the next generation of young women locked in systemic poverty.</p>
+
+                        <blockquote>
+                            "We didn't just need water; we needed our time back. We needed the opportunity to learn, to grow, and to decide our own futures."
+                        </blockquote>
+
+                        <h3>The Arrival of Clean Water</h3>
+                        <p>In mid-2025, Hope & Harmony’s Clean Water team arrived in Amina's community. Operating on our holistic water sustainability model, we partnered with the village elders to drill a deep solar-powered borehole and install a localized gravity-fed distribution network with public water kiosks.</p>
+                        
+                        <p>Crucially, the community took ownership of the project from day one. A local Water Committee was established—comprising five local women, including Amina’s mother—trained to maintain the solar panels, manage the pump infrastructure, and collect small, democratic maintenance fees to ensure long-term self-sufficiency.</p>
+                        
+                        <p>The impact was immediate. Instead of walking six kilometers, families now had safe, clean drinking water just five minutes from their doorsteps. Waterborne diseases dropped by over 80% within three months. But the most transformative change was measured in classrooms.</p>
+
+                        <h3>Unlocking the Future</h3>
+                        <p>With her water-carrying chores reduced from four hours to ten minutes a day, Amina was finally able to enroll in school. She entered the newly constructed solar-powered primary classroom funded by Hope & Harmony donors.</p>
+                        
+                        <p>Today, Amina is one of the top-performing students in her class. She has access to digital learning tablets, clean sanitation blocks, and dedicated teachers. Her face lights up when she talks about her favorite subjects: science and reading.</p>
+                        
+                        <p>“Now I have time to do my homework and play with my friends,” Amina says with a proud smile. “When I grow up, I want to study science and become a doctor so I can help heal people in my village. Clean water gave me a chance to have a dream.”</p>
+                        
+                        <p>Amina's story is proof that clean water is not just about health—it is the foundation of education, gender equality, and sustainable community empowerment.</p>
+                    </div>
+
+                    <!-- Share Section -->
+                    <div class="share-row">
+                        <span style="font-weight: 700; color: var(--text-main);">Was this story inspiring? Share it:</span>
+                        <div class="share-buttons">
+                            <button class="share-btn" onclick="alert('Link copied to clipboard!')">
+                                🔗 Copy Link
+                            </button>
+                            <button class="share-btn">
+                                🐦 Twitter
+                            </button>
+                            <button class="share-btn">
+                                👥 Facebook
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CTA Donation Card -->
+                    <div class="donation-banner-card">
+                        <h3>Help Us Write More Stories Like Amina's</h3>
+                        <p>A gift of just $25 can provide clean drinking water and support classroom access for another child in need. 100% of your public donation goes directly to field programs.</p>
+                        <a href="pricing.html" class="btn-magnetic" style="background: var(--primary); color: white; display: inline-block; padding: 14px 32px; border-radius: 30px; font-weight: 700;">Support Our Cause</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== RELATED STORIES ===== -->
+        <section class="related-stories-section">
+            <div class="container">
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span class="label-text">More Stories</span>
+                </div>
+                <h2 class="text-serif" style="font-size: 2.2rem; margin-bottom: 40px;">Related <span class="text-italic text-primary">Narratives.</span></h2>
+                
+                <div class="related-grid">
+                    <article class="story-card-v2" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
+                        <div class="story-img-wrap" style="height: 200px; overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop"
+                                alt="Education" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="story-card-body" style="padding: 24px;">
+                            <h4 class="text-serif" style="font-size: 1.25rem; margin-bottom: 10px;">Solar Schools in the Savannah</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">How we are bringing digital education to off-grid regions across three countries.</p>
+                            <a href="blog.html" class="btn-link-animated" style="color: var(--primary); font-weight: 700;">Read Story →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="story-card-v2" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
+                        <div class="story-img-wrap" style="height: 200px; overflow: hidden;">
+                            <img src="../asset/relay img.jpg"
+                                alt="Healthcare" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="story-card-body" style="padding: 24px;">
+                            <h4 class="text-serif" style="font-size: 1.25rem; margin-bottom: 10px;">The Vaccine Relay</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">Reaching 50 remote villages during the monsoon season with vital vaccines.</p>
+                            <a href="blog.html" class="btn-link-animated" style="color: var(--primary); font-weight: 700;">Read Story →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="story-card-v2" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
+                        <div class="story-img-wrap" style="height: 200px; overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=600&auto=format&fit=crop"
+                                alt="Climate" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="story-card-body" style="padding: 24px;">
+                            <h4 class="text-serif" style="font-size: 1.25rem; margin-bottom: 10px;">Guardians of the Forest</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">How indigenous farming collectives are protecting the Amazon borderlands.</p>
+                            <a href="blog.html" class="btn-link-animated" style="color: var(--primary); font-weight: 700;">Read Story →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer section bg-dark text-white">
+        <div class="container">
+            <div class="footer-top" style="display: grid; grid-template-columns: 1fr 2fr; gap: 80px;">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo text-serif" style="color: var(--white); font-size: 1.8rem;">Hope & Harmony</a>
+                    <p style="color: rgba(255, 255, 255, 0.6); margin-top: 20px;">Building sustainable futures through compassion, action, and radical transparency.</p>
+                    <div class="footer-social" style="display: flex; gap: 16px; margin-top: 24px;">
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="Facebook">Facebook</a>
+                    </div>
+                </div>
+                <div class="footer-nav-groups" style="display: flex; gap: 80px; justify-content: flex-end;">
+                    <div class="nav-group">
+                        <h4 style="color: var(--white); margin-bottom: 20px; font-size: 1.1rem;">Explore</h4>
+                        <ul style="display: flex; flex-direction: column; gap: 12px;">
+                            <li><a href="about.html" style="color: rgba(255,255,255,0.7);">Our Story</a></li>
+                            <li><a href="services.html" style="color: rgba(255,255,255,0.7);">Causes</a></li>
+                            <li><a href="blog.html" style="color: rgba(255,255,255,0.7);">Impact Stories</a></li>
+                            <li><a href="pricing.html" style="color: rgba(255,255,255,0.7);">Donate</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-group">
+                        <h4 style="color: var(--white); margin-bottom: 20px; font-size: 1.1rem;">Connect</h4>
+                        <ul style="display: flex; flex-direction: column; gap: 12px;">
+                            <li><a href="contact.html" style="color: rgba(255,255,255,0.7);">Contact Us</a></li>
+                            <li><a href="../auth/login.html" style="color: rgba(255,255,255,0.7);">Donor Portal</a></li>
+                            <li><a href="contact.html" style="color: rgba(255,255,255,0.7);">Volunteer</a></li>
+                            <li><a href="contact.html" style="color: rgba(255,255,255,0.7);">Partner With Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 30px; margin-top: 60px; display: flex; justify-content: space-between; font-size: 0.9rem; color: rgba(255, 255, 255, 0.5);">
+                <p>&copy; 2026 Hope & Harmony NGO. All rights reserved.</p>
+                <div class="footer-bottom-links" style="display: flex; gap: 20px;">
+                    <a href="#" style="color: rgba(255, 255, 255, 0.5);">Privacy</a>
+                    <a href="#" style="color: rgba(255, 255, 255, 0.5);">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../src/js/main.js"></script>
+</body>
+
+</html>

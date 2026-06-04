@@ -1,13 +1,18 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Education | Hope & Harmony Detailed Impact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../src/css/main.css">
     <link rel="stylesheet" href="../src/css/responsive.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
         .service-hero-detail {
             height: 70vh;
@@ -105,7 +110,7 @@
 
 <body>
     <!-- Standard Header -->
-    <header class="header-standard">
+    <header class="header-standard" id="mainHeader">
         <div class="container nav-container">
             <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
             <nav class="standard-links">
@@ -152,15 +157,17 @@
     <main>
         <!-- Full-Width Hero -->
         <section class="service-hero-detail">
-            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=2000&auto=format&fit=crop"
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2000&auto=format&fit=crop"
                 alt="Education Impact">
+            <div class="service-hero-detail img">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2000&auto=format&fit=crop" alt="Education Impact">
+            </div>
             <div class="hero-content-detail">
                 <div class="reveal">
                     <span class="category" style="color: var(--primary-light);">Deep Dive</span>
-                    <h1 class="text-serif" style="font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 20px;">
-                        Education: The <span class="text-italic">Great Equalizer.</span></h1>
-                    <p style="font-size: 1.1rem; opacity: 0.9;">Across 30 countries, we are building more than just
-                        schools. We are building futures, one student at a time.</p>
+                    <h1 class="text-serif" style="font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 20px;">Education:
+                        Classrooms of <span class="text-italic">Change.</span></h1>
+                    <p style="font-size: 1.1rem; opacity: 0.9;">Building facilities, distributing digital tablets, and empowering educators to unlock every child's potential.</p>
                 </div>
             </div>
         </section>
@@ -170,40 +177,31 @@
             <div class="container">
                 <div class="depth-grid">
                     <div class="reveal">
-                        <h2 class="text-serif" style="margin-bottom: 30px;">Our Long-Term Strategy</h2>
-                        <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.8;">Education is not just about
-                            literacy; it's about breaking the cycle of poverty. Our approach focuses on
-                            <strong>sustainability</strong> and <strong>quality</strong>. We don't just build a school
-                            and walk away. We partner with local governments to ensure curriculum alignment and provide
-                            ongoing support for teachers.
-                        </p>
+                        <h2 class="text-serif" style="margin-bottom: 30px;">Our Educational Model</h2>
+                        <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.8;">Our education program focuses on <strong>Infrastructure & Integration</strong>. We don't just build classrooms; we equip schools with sustainable solar grids, train local teachers, and distribute offline digital learning devices loaded with localized curricula.</p>
 
                         <div class="svc-problem" style="margin: 40px 0;">
                             <h4>The Root Problem</h4>
-                            <p>Global education statistics are staggering. 244 million children are out of school, not
-                                because they don't want to learn, but because the infrastructure simply doesn't exist or
-                                is too dangerous to access.</p>
+                            <p>Over 250 million children globally are out of school, many due to lack of local facilities, safety concerns on paths, or the need to gather wood and water. Without literacy and basic skills, escape from the poverty cycle is nearly impossible.</p>
                         </div>
 
-                        <p style="line-height: 1.8;">By providing solar-powered facilities, we enable evening classes
-                            for adults, turning these centers into community hubs for lifelong learning. This holistic
-                            model ensures that the entire community values and protects the educational environment.</p>
+                        <p style="line-height: 1.8;">By placing schools directly within villages and coupling them with water kiosks, we remove safety boundaries. Our learning tools allow students to develop modern vocational and digital competencies, preparing them for the digital economy.</p>
                     </div>
 
                     <div class="reveal" style="background: var(--bg-light); padding: 40px; border-radius: 24px;">
                         <h3 class="text-serif" style="margin-bottom: 20px;">Impact at a Glance</h3>
                         <ul style="list-style: none; padding: 0;">
                             <li style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
-                                <span style="font-size: 1.5rem;">🏗️</span>
-                                <div><strong>214</strong> Schools Constructed</div>
-                            </li>
-                            <li style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
-                                <span style="font-size: 1.5rem;">👩‍🏫</span>
-                                <div><strong>12,500</strong> Teachers Certified</div>
+                                <span style="font-size: 1.5rem;">🏫</span>
+                                <div><strong>1,200+</strong> Classrooms Built & Supported</div>
                             </li>
                             <li style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
                                 <span style="font-size: 1.5rem;">📚</span>
-                                <div><strong>85%</strong> Literacy Increase in Target Zones</div>
+                                <div><strong>500,000+</strong> Students Reached globally</div>
+                            </li>
+                            <li style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
+                                <span style="font-size: 1.5rem;">👩‍🏫</span>
+                                <div><strong>4,500</strong> Local Educators Trained</div>
                             </li>
                         </ul>
                     </div>
@@ -215,32 +213,101 @@
         <section class="detail-section bg-light">
             <div class="container">
                 <div class="text-center reveal" style="margin-bottom: 60px;">
-                    <h2 class="text-serif">The Evolution of Our Program</h2>
-                    <p>A decade of commitment to global education.</p>
+                    <h2 class="text-serif">Our Journey in Education</h2>
+                    <p>Fostering literacy and technical skills step-by-step.</p>
                 </div>
 
                 <div class="timeline reveal">
                     <div class="timeline-item">
                         <span class="timeline-year">2016</span>
-                        <h4 class="text-serif">The Pilot Program</h4>
-                        <p>Opened our first solar-powered primary school in rural Kenya, serving 120 students.</p>
+                        <h4 class="text-serif">Primary Foundation</h4>
+                        <p>Constructed our first rural primary school, registering 150 local students in Ghana.</p>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-year">2019</span>
-                        <h4 class="text-serif">Digital Expansion</h4>
-                        <p>Partnered with tech leaders to provide 50,000 tablets with offline educational content.</p>
+                        <h4 class="text-serif">Digital Integration</h4>
+                        <p>Launched our offline-enabled learning tablet program, bypassing the lack of local internet.</p>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-year">2022</span>
-                        <h4 class="text-serif">The 100th School</h4>
-                        <p>Reached a major milestone with the opening of our 100th community-built school in Bangladesh.
-                        </p>
+                        <h4 class="text-serif">Solar Classroom Initiative</h4>
+                        <p>Transitioned rural school designs to run completely on localized solar power banks.</p>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-year">Present</span>
-                        <h4 class="text-serif">Global Policy Advocacy</h4>
-                        <p>Advising 5 national governments on rural education infrastructure standards.</p>
+                        <h4 class="text-serif">Secondary Scholarships</h4>
+                        <p>Supporting over 10,000 students annually with full secondary school and vocational tuition grants.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories Section -->
+        <section class="detail-section bg-white">
+            <div class="container">
+                <div class="text-center reveal" style="margin-bottom: 60px;">
+                    <span class="category" style="color: var(--primary);">Impact Narrative</span>
+                    <h2 class="text-serif" style="margin-top: 10px;">Stories from the Field</h2>
+                    <p style="color: var(--text-muted); max-width: 600px; margin: 10px auto 0;">Empowering the next generation through solar-powered literacy.</p>
+                </div>
+                
+                <div class="depth-grid reveal" style="align-items: center; display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop" 
+                             alt="Education Story" style="border-radius: 24px; box-shadow: var(--shadow-md); width: 100%; height: 350px; object-fit: cover;">
+                    </div>
+                    <div>
+                        <span class="tag" style="background: rgba(5, 150, 105, 0.1); color: var(--secondary); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">Classroom Spotlight</span>
+                        <h3 class="text-serif" style="margin: 15px 0; font-size: 2rem;">Light in the Savannah</h3>
+                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 20px;">
+                            By installing solar-powered light grids and offline digital textbooks in schools across rural Senegal, students are now able to study after sunset. District high-school admission test passing rates have doubled as a direct result.
+                        </p>
+                        <a href="blog.html" class="btn-link-animated" style="color: var(--primary); font-weight: 700;">Explore Education Stories →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteer CTA Section -->
+        <section class="detail-section" style="background: linear-gradient(135deg, var(--bg-light) 0%, rgba(226, 232, 240, 0.5) 100%);">
+            <div class="container text-center reveal">
+                <h2 class="text-serif" style="margin-bottom: 15px;">Volunteer to Educate</h2>
+                <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 30px; line-height: 1.7;">
+                    Offer your skills as a virtual tutor, help draft interactive curriculum material, or assist on-site school builds.
+                </p>
+                <a href="contact.html" class="btn" style="background: var(--secondary); display: inline-block; padding: 14px 36px; border-radius: 30px; color: white; font-weight: 700;">Apply to Volunteer</a>
+            </div>
+        </section>
+
+        <!-- Related Projects Section -->
+        <section class="detail-section bg-white">
+            <div class="container">
+                <div class="text-center reveal" style="margin-bottom: 50px;">
+                    <h2 class="text-serif">Related Causes</h2>
+                    <p style="color: var(--text-muted);">Explore our other active impact channels.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;" class="reveal">
+                    <a href="service-water.html" style="background: var(--bg-light); border-radius: 16px; overflow: hidden; display: block; box-shadow: var(--shadow-sm); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <img src="https://images.unsplash.com/photo-1548932813-71ede393952d?q=80&w=600&auto=format&fit=crop" alt="Water" style="height: 180px; width: 100%; object-fit: cover;">
+                        <div style="padding: 20px;">
+                            <h4 class="text-serif" style="margin-bottom: 8px;">Clean Water</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Drilling solar-powered wells and managing clean water points locally.</p>
+                        </div>
+                    </a>
+                    <a href="service-healthcare.html" style="background: var(--bg-light); border-radius: 16px; overflow: hidden; display: block; box-shadow: var(--shadow-sm); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop" alt="Healthcare" style="height: 180px; width: 100%; object-fit: cover;">
+                        <div style="padding: 20px;">
+                            <h4 class="text-serif" style="margin-bottom: 8px;">Healthcare</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Operating mobile health clinics in highland and remote villages.</p>
+                        </div>
+                    </a>
+                    <a href="service-empowerment.html" style="background: var(--bg-light); border-radius: 16px; overflow: hidden; display: block; box-shadow: var(--shadow-sm); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=600&auto=format&fit=crop" alt="Empowerment" style="height: 180px; width: 100%; object-fit: cover;">
+                        <div style="padding: 20px;">
+                            <h4 class="text-serif" style="margin-bottom: 8px;">Empowerment</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Vocational training and micro-financing to boost independent businesses.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -248,13 +315,12 @@
         <!-- CTA Section -->
         <section class="detail-section bg-dark text-white text-center">
             <div class="container reveal">
-                <h2 class="text-serif" style="margin-bottom: 24px;">Ready to Change a Life?</h2>
+                <h2 class="text-serif" style="margin-bottom: 24px;">Support Education</h2>
                 <p style="margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.8;">
-                    Your support can provide the materials, teachers, and safe spaces children need to succeed.</p>
+                    Your donation funds school builds, student digital tablets, teacher wages, and scholarships for promising students.</p>
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="../pages/booking.html" class="btn btn-primary">Sponsor a Student</a>
-                    <a href="contact.html" class="btn btn-outline" style="color: white; border-color: white;">Volunteer
-                        / Partner</a>
+                    <a href="booking.html" class="btn btn-primary" style="background: var(--primary); display: inline-block; padding: 14px 36px; border-radius: 30px; color: white; font-weight: 700;">Fund a Scholar</a>
+                    <a href="contact.html" class="btn btn-outline" style="color: white; border: 2px solid white; display: inline-block; padding: 12px 34px; border-radius: 30px; font-weight: 600;">Partner with Us</a>
                 </div>
             </div>
         </section>
@@ -263,80 +329,42 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer section">
         <div class="container">
-            <div class="footer-top">
+            <div class="footer-top" style="display: grid; grid-template-columns: 1fr 2fr; gap: 80px;">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo text-serif">Hope & Harmony</a>
+                    <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
                     <p>Building sustainable futures through compassion, action, and radical transparency.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Instagram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
-                                </path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Twitter">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Facebook">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
+                    <div class="footer-social" style="display: flex; gap: 12px; margin-top: 15px;">
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="Facebook">Facebook</a>
                     </div>
                 </div>
-                <div class="footer-nav-groups">
+                <div class="footer-nav-groups" style="display: flex; gap: 80px; justify-content: flex-end;">
                     <div class="nav-group">
                         <h4>Explore</h4>
                         <ul>
-                            <li><a href="pages/about.html">Our Story</a></li>
-                            <li><a href="pages/services.html">Causes</a></li>
-                            <li><a href="pages/blog.html">Impact Stories</a></li>
-                            <li><a href="pages/pricing.html">Donate</a></li>
+                            <li><a href="about.html">Our Story</a></li>
+                            <li><a href="services.html">Causes</a></li>
+                            <li><a href="blog.html">Impact Stories</a></li>
+                            <li><a href="pricing.html">Donate</a></li>
                         </ul>
                     </div>
                     <div class="nav-group">
                         <h4>Connect</h4>
                         <ul>
-                            <li><a href="pages/contact.html">Contact Us</a></li>
-                            <li><a href="auth/login.html">Donor Portal</a></li>
-                            <li><a href="pages/contact.html">Volunteer</a></li>
-                            <li><a href="pages/contact.html">Partner With Us</a></li>
-                        </ul>
-                    </div>
-                    <div class="nav-group">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="../auth/login.html">Donor Portal</a></li>
+                            <li><a href="contact.html">Volunteer</a></li>
+                            <li><a href="contact.html">Partner With Us</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Hope & Harmony NGO. All rights reserved. Registered Charity No. 1234567.</p>
-                <div class="footer-bottom-links">
+            <div class="footer-bottom" style="border-top: 1px solid rgba(0, 0, 0, 0.08); padding-top: 30px; margin-top: 40px; display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted);">
+                <p>&copy; 2026 Hope & Harmony NGO. All rights reserved.</p>
+                <div class="footer-bottom-links" style="display: flex; gap: 20px;">
                     <a href="#">Privacy</a>
                     <a href="#">Terms</a>
-                    <a href="#">Cookies</a>
                 </div>
             </div>
         </div>
@@ -344,23 +372,16 @@
 
     <script src="../src/js/main.js"></script>
     <script>
-        // Reveal Animations
         document.addEventListener('DOMContentLoaded', () => {
-            gsap.registerPlugin(ScrollTrigger);
-
-            gsap.utils.toArray('.reveal').forEach(elem => {
-                gsap.from(elem, {
-                    scrollTrigger: {
-                        trigger: elem,
-                        start: 'top 85%',
-                        toggleActions: 'play none none none'
-                    },
-                    y: 40,
-                    opacity: 0,
-                    duration: 1,
-                    ease: 'power3.out'
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.utils.toArray('.reveal').forEach(elem => {
+                    gsap.from(elem, {
+                        scrollTrigger: { trigger: elem, start: 'top 85%', toggleActions: 'play none none none' },
+                        y: 40, opacity: 0, duration: 1, ease: 'power3.out'
+                    });
                 });
-            });
+            }
         });
     </script>
 </body>

@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTestimonialSlider();
     initFilterButtons();
     initTooltips();
+    initImageFallbacks();
 });
 
 /* ============================================================
@@ -55,11 +56,15 @@ function initNavbar() {
 function initHamburger() {
     const hamburger = document.getElementById('hamburger');
     const overlay = document.getElementById('mobileNavOverlay');
+    const header = document.querySelector('.header-standard');
     if (!hamburger || !overlay) return;
 
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('open');
         overlay.classList.toggle('open');
+        if (header) {
+            header.classList.toggle('mobile-menu-active', hamburger.classList.contains('open'));
+        }
         document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
     });
 
@@ -67,6 +72,9 @@ function initHamburger() {
         link.addEventListener('click', () => {
             hamburger.classList.remove('open');
             overlay.classList.remove('open');
+            if (header) {
+                header.classList.remove('mobile-menu-active');
+            }
             document.body.style.overflow = '';
         });
     });
@@ -267,6 +275,7 @@ function initTestimonialSlider() {
     const prevBtn = document.querySelector('.nav-btn.prev');
     const nextBtn = document.querySelector('.nav-btn.next');
     const progress = document.querySelector('.progress');
+    const sliderContainer = document.querySelector('.testimonial-slider');
     if (!slides.length) return;
 
     let current = 0;
@@ -282,8 +291,27 @@ function initTestimonialSlider() {
     if (prevBtn) prevBtn.addEventListener('click', () => showSlide(current - 1));
     if (nextBtn) nextBtn.addEventListener('click', () => showSlide(current + 1));
 
+    // Keyboard navigation
+    if (sliderContainer) {
+        sliderContainer.setAttribute('tabindex', '0');
+        sliderContainer.setAttribute('aria-label', 'Testimonial slider');
+        sliderContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') showSlide(current - 1);
+            if (e.key === 'ArrowRight') showSlide(current + 1);
+        });
+    }
+
     // Auto-advance
-    setInterval(() => showSlide(current + 1), 6000);
+    let autoInterval = setInterval(() => showSlide(current + 1), 6000);
+
+    // Pause on hover
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', () => clearInterval(autoInterval));
+        sliderContainer.addEventListener('mouseleave', () => {
+            clearInterval(autoInterval);
+            autoInterval = setInterval(() => showSlide(current + 1), 6000);
+        });
+    }
 }
 
 /* ============================================================
@@ -335,26 +363,108 @@ function initHorizontalScroll() {
     const inner = document.querySelector('.horizontal-inner');
     if (!container || !inner) return;
 
-    // Only on desktop (min-width 1024px or similar)
+    // Only on desktop (min-width 992px)
     if (window.innerWidth < 992) return;
 
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-    const scrollWidth = inner.offsetWidth - window.innerWidth;
-
-    gsap.to(inner, {
+    const scrollTween = gsap.to(inner, {
         x: () => -(inner.scrollWidth - window.innerWidth),
         ease: 'none',
         scrollTrigger: {
             trigger: container,
             start: 'top top',
             end: () => `+=${inner.scrollWidth}`,
-            scrub: 1,
+            scrub: 0.8,
             pin: true,
             invalidateOnRefresh: true,
             anticipatePin: 1
         }
     });
+
+    // Native Auto-Scroll logic
+    let isHovered = false;
+    let autoScrollActive = false;
+    let scrollSpeed = 0.6; // pixels per frame (slower/subtle)
+
+    function autoScroll() {
+        if (!autoScrollActive || isHovered) return;
+
+        const trigger = scrollTween.scrollTrigger;
+        if (!trigger) return;
+
+        const start = trigger.start;
+        const end = trigger.end;
+        const current = window.scrollY;
+
+        if (current >= start && current < end - 4) {
+            window.scrollTo(0, current + scrollSpeed);
+            requestAnimationFrame(autoScroll);
+        } else if (current >= end - 4) {
+            // Loop back to start smoothly after a small delay
+            autoScrollActive = false;
+            setTimeout(() => {
+                let steps = 60;
+                let currentStep = 0;
+                const startScroll = window.scrollY;
+                const scrollDiff = start - startScroll;
+
+                function easeInOutQuad(t) {
+                    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                }
+
+                function animateBack() {
+                    if (isHovered) {
+                        autoScrollActive = true;
+                        return;
+                    }
+                    currentStep++;
+                    const progress = currentStep / steps;
+                    const easeVal = easeInOutQuad(progress);
+                    window.scrollTo(0, startScroll + scrollDiff * easeVal);
+
+                    if (currentStep < steps) {
+                        requestAnimationFrame(animateBack);
+                    } else {
+                        // Small delay at start before scrolling again
+                        setTimeout(() => {
+                            autoScrollActive = true;
+                            autoScroll();
+                        }, 1000);
+                    }
+                }
+                animateBack();
+            }, 2500);
+        } else {
+            requestAnimationFrame(autoScroll);
+        }
+    }
+
+    // Trigger auto scroll when section enters viewport
+    ScrollTrigger.create({
+        trigger: container,
+        start: 'top top',
+        end: 'bottom top',
+        onToggle: self => {
+            if (self.isActive) {
+                autoScrollActive = true;
+                autoScroll();
+            } else {
+                autoScrollActive = false;
+            }
+        }
+    });
+
+    container.addEventListener('mouseenter', () => {
+        isHovered = true;
+    }, { passive: true });
+
+    container.addEventListener('mouseleave', () => {
+        isHovered = false;
+        if (autoScrollActive) {
+            autoScroll();
+        }
+    }, { passive: true });
 }
 
 /* ============================================================
@@ -364,4 +474,43 @@ function initTooltips() {
     document.querySelectorAll('[data-tooltip]').forEach(el => {
         el.setAttribute('title', el.getAttribute('data-tooltip'));
     });
+}
+
+/* ============================================================
+   IMAGE FALLBACKS
+   ============================================================ */
+function initImageFallbacks() {
+    document.querySelectorAll('img').forEach(img => {
+        if (img.complete && img.naturalHeight === 0) {
+            handleImageError(img);
+        }
+        img.addEventListener('error', () => {
+            handleImageError(img);
+        });
+    });
+}
+
+function handleImageError(img) {
+    if (img.classList.contains('img-fallback-active')) return;
+    img.classList.add('img-fallback-active');
+    
+    const altText = (img.getAttribute('alt') || '').toLowerCase();
+    
+    if (altText.includes('water')) {
+        img.src = 'https://images.unsplash.com/photo-1548932813-71ede393952d?q=80&w=600&auto=format&fit=crop';
+    } else if (altText.includes('education') || altText.includes('school') || altText.includes('class') || altText.includes('learning')) {
+        img.src = 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop';
+    } else if (altText.includes('climate') || altText.includes('earth') || altText.includes('green') || altText.includes('forest') || altText.includes('nature')) {
+        img.src = 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=600&auto=format&fit=crop';
+    } else if (altText.includes('healthcare') || altText.includes('medical') || altText.includes('vaccine') || altText.includes('clinic') || altText.includes('wellness')) {
+        img.src = 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop';
+    } else if (altText.includes('empower') || altText.includes('women') || altText.includes('skills') || altText.includes('team') || altText.includes('community')) {
+        img.src = 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600&auto=format&fit=crop';
+    } else if (altText.includes('food') || altText.includes('farm') || altText.includes('feed') || altText.includes('hungry')) {
+        img.src = 'https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=600&auto=format&fit=crop';
+    } else if (altText.includes('avatar') || altText.includes('sarah') || altText.includes('james') || altText.includes('founder') || img.classList.contains('avatar')) {
+        img.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop';
+    } else {
+        img.src = 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600&auto=format&fit=crop';
+    }
 }

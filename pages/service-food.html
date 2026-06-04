@@ -1,13 +1,18 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Security | Hope & Harmony Detailed Impact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../src/css/main.css">
     <link rel="stylesheet" href="../src/css/responsive.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
         .service-hero-detail {
             height: 70vh;
@@ -104,7 +109,8 @@
 </head>
 
 <body>
-    <header class="header-standard">
+    <!-- Standard Header -->
+    <header class="header-standard" id="mainHeader">
         <div class="container nav-container">
             <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
             <nav class="standard-links">
@@ -149,57 +155,50 @@
     </div>
 
     <main>
+        <!-- Full-Width Hero -->
         <section class="service-hero-detail">
-            <img src="../asset/com img.jpg"
+            <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=2000&auto=format&fit=crop"
                 alt="Food Security Impact">
             <div class="hero-content-detail">
                 <div class="reveal">
                     <span class="category" style="color: var(--primary-light);">Deep Dive</span>
-                    <h1 class="text-serif" style="font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 20px;">Food
-                        Security: Ending <span class="text-italic">Hunger.</span></h1>
-                    <p style="font-size: 1.1rem; opacity: 0.9;">Transforming subsistence farming into sustainable
-                        nutrition for a growing world.</p>
+                    <h1 class="text-serif" style="font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 20px;">Food Security:
+                        Regenerative <span class="text-italic">Farms.</span></h1>
+                    <p style="font-size: 1.1rem; opacity: 0.9;">Reversing desertification and establishing local nutrition systems through agroforestry.</p>
                 </div>
             </div>
         </section>
 
+        <!-- Deep Explanation -->
         <section class="detail-section bg-white">
             <div class="container">
                 <div class="depth-grid">
                     <div class="reveal">
-                        <h2 class="text-serif" style="margin-bottom: 30px;">Our Regenerative Agriculture Model</h2>
-                        <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.8;">Our approach to food
-                            security is built on <strong>Resilience</strong>. We focus on training farmers to work with
-                            their local environments through composting, crop rotation, and water-efficient irrigation,
-                            ensuring that even in drought years, a family can feed itself.</p>
+                        <h2 class="text-serif" style="margin-bottom: 30px;">Our Regenerative Farming Model</h2>
+                        <p style="margin-bottom: 24px; font-size: 1.1rem; line-height: 1.8;">Our food programs leverage <strong>Agroforestry & Soil Ecology</strong>. Instead of importing chemical fertilizers and seeds, we train community farmers in compost cycling, diverse polyculture farming, intercropping native shade trees, and installing solar micro-irrigation.</p>
 
                         <div class="svc-problem" style="margin: 40px 0;">
                             <h4>The Root Problem</h4>
-                            <p>Global hunger is not a production problem; it's a distribution and resilience problem.
-                                Fluctuating market prices and climate shocks leave smallholder farmers vulnerable,
-                                leading to seasonal malnutrition that stunts children's growth and potential.</p>
+                            <p>Conventional agriculture has stripped soil health across developing regions, exposing communities to crop failures, acute malnutrition, and absolute dependency on imported grain. Climate-driven droughts exacerbate this vulnerability yearly.</p>
                         </div>
 
-                        <p style="line-height: 1.8;">We establish community-managed seed banks that preserve resilient,
-                            indigenous varieties. Furthermore, our school nutrition programs provide a direct market for
-                            local farmers, creating a closed-loop system where the community's children are fed by the
-                            community's land.</p>
+                        <p style="line-height: 1.8;">Polyculture setups withstand drought cycles and provide a wide spectrum of nutritional food options (legumes, grains, fruits, vegetables). Excess yield is packed and distributed via community cooperative boards, bringing in external revenue.</p>
                     </div>
 
                     <div class="reveal" style="background: var(--bg-light); padding: 40px; border-radius: 24px;">
                         <h3 class="text-serif" style="margin-bottom: 20px;">Impact at a Glance</h3>
                         <ul style="list-style: none; padding: 0;">
                             <li style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
-                                <span style="font-size: 1.5rem;">🥗</span>
-                                <div><strong>120M</strong> Meals Served to School Children</div>
+                                <span style="font-size: 1.5rem;">🚜</span>
+                                <div><strong>3,500+</strong> Regenerative Farms Seeded</div>
                             </li>
                             <li style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
-                                <span style="font-size: 1.5rem;">👨‍🌾</span>
-                                <div><strong>85,000</strong> Farmers Trained in Regenerative Tech</div>
+                                <span style="font-size: 1.5rem;">🥬</span>
+                                <div><strong>120,000+</strong> People Fed annually</div>
                             </li>
                             <li style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
-                                <span style="font-size: 1.5rem;">🏦</span>
-                                <div><strong>400+</strong> Community Seed Banks Established</div>
+                                <span style="font-size: 1.5rem;">🎒</span>
+                                <div><strong>95%</strong> Malnutrition Reduction in target districts</div>
                             </li>
                         </ul>
                     </div>
@@ -207,52 +206,118 @@
             </div>
         </section>
 
+        <!-- Timeline Section -->
         <section class="detail-section bg-light">
             <div class="container">
                 <div class="text-center reveal" style="margin-bottom: 60px;">
-                    <h2 class="text-serif">Harvesting Change Over Time</h2>
-                    <p>Building a world where no child goes to bed hungry.</p>
+                    <h2 class="text-serif">Our Journey in Food Security</h2>
+                    <p>Re-establishing organic soil systems step-by-step.</p>
                 </div>
 
                 <div class="timeline reveal">
                     <div class="timeline-item">
-                        <span class="timeline-year">2016</span>
-                        <h4 class="text-serif">The First Seed Bank</h4>
-                        <p>Launched our first indigenous seed collective in Central America, preserving 50 types of
-                            heritage corn.</p>
+                        <span class="timeline-year">2018</span>
+                        <h4 class="text-serif">First Seed Bank</h4>
+                        <p>Established a community-managed organic seed catalog in East Africa, securing native seed stocks.</p>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-year">2019</span>
-                        <h4 class="text-serif">School Farm Integration</h4>
-                        <p>Began building school gardens that serve as both outdoor classrooms and source of fresh
-                            vegetables for lunch programs.</p>
+                        <span class="timeline-year">2021</span>
+                        <h4 class="text-serif">Micro-Irrigation</h4>
+                        <p>Rolled out solar-powered drip irrigation setups, reducing water consumption on farms by 70%.</p>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-year">2022</span>
-                        <h4 class="text-serif">The Drought Resilience Fund</h4>
-                        <p>Established a community-managed insurance fund for farmers to mitigate the impact of
-                            unpredictable weather patterns.</p>
+                        <span class="timeline-year">2024</span>
+                        <h4 class="text-serif">Regenerative Centers</h4>
+                        <p>Established 10 regional training farms providing direct educational courses to local smallholders.</p>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-year">Present</span>
-                        <h4 class="text-serif">Regional Food Hubs</h4>
-                        <p>Opening large-scale processing centers that allow local farmers to package and sell their
-                            surplus to urban markets.</p>
+                        <h4 class="text-serif">Cooperative Distribution</h4>
+                        <p>Managing direct supply chains, carrying community cooperative produce directly to urban markets.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Success Stories Section -->
+        <section class="detail-section bg-white">
+            <div class="container">
+                <div class="text-center reveal" style="margin-bottom: 60px;">
+                    <span class="category" style="color: var(--primary);">Impact Narrative</span>
+                    <h2 class="text-serif" style="margin-top: 10px;">Stories from the Field</h2>
+                    <p style="color: var(--text-muted); max-width: 600px; margin: 10px auto 0;">Fostering long-term community nutritional health and agricultural independence.</p>
+                </div>
+                
+                <div class="depth-grid reveal" style="align-items: center; display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop" 
+                             alt="Food Security Story" style="border-radius: 24px; box-shadow: var(--shadow-md); width: 100%; height: 350px; object-fit: cover;">
+                    </div>
+                    <div>
+                        <span class="tag" style="background: rgba(5, 150, 105, 0.1); color: var(--secondary); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">Agricultural Spotlight</span>
+                        <h3 class="text-serif" style="margin: 15px 0; font-size: 2rem;">Farms of the Future</h3>
+                        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 20px;">
+                            Local farmers in Malawi transitioned depleted sandy fields into lush polyculture agroforestry zones. With organic composting and native shade canopy setups, they secured food supplies for 5,000 households and established local markets.
+                        </p>
+                        <a href="blog.html" class="btn-link-animated" style="color: var(--primary); font-weight: 700;">Explore Food Stories →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteer CTA Section -->
+        <section class="detail-section" style="background: linear-gradient(135deg, var(--bg-light) 0%, rgba(226, 232, 240, 0.5) 100%);">
+            <div class="container text-center reveal">
+                <h2 class="text-serif" style="margin-bottom: 15px;">Volunteer on the Farm</h2>
+                <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 30px; line-height: 1.7;">
+                    Help design educational agronomy manuals, advise on water catchment engineering, or join our seasonal farming cohorts.
+                </p>
+                <a href="contact.html" class="btn" style="background: var(--secondary); display: inline-block; padding: 14px 36px; border-radius: 30px; color: white; font-weight: 700;">Apply to Volunteer</a>
+            </div>
+        </section>
+
+        <!-- Related Projects Section -->
+        <section class="detail-section bg-white">
+            <div class="container">
+                <div class="text-center reveal" style="margin-bottom: 50px;">
+                    <h2 class="text-serif">Related Causes</h2>
+                    <p style="color: var(--text-muted);">Explore our other active impact channels.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;" class="reveal">
+                    <a href="service-water.html" style="background: var(--bg-light); border-radius: 16px; overflow: hidden; display: block; box-shadow: var(--shadow-sm); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <img src="https://images.unsplash.com/photo-1548932813-71ede393952d?q=80&w=600&auto=format&fit=crop" alt="Water" style="height: 180px; width: 100%; object-fit: cover;">
+                        <div style="padding: 20px;">
+                            <h4 class="text-serif" style="margin-bottom: 8px;">Clean Water</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Drilling solar-powered wells and managing clean water points locally.</p>
+                        </div>
+                    </a>
+                    <a href="service-climate.html" style="background: var(--bg-light); border-radius: 16px; overflow: hidden; display: block; box-shadow: var(--shadow-sm); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=600&auto=format&fit=crop" alt="Climate Action" style="height: 180px; width: 100%; object-fit: cover;">
+                        <div style="padding: 20px;">
+                            <h4 class="text-serif" style="margin-bottom: 8px;">Climate Action</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Reforesting degraded land and establishing local green jobs.</p>
+                        </div>
+                    </a>
+                    <a href="service-empowerment.html" style="background: var(--bg-light); border-radius: 16px; overflow: hidden; display: block; box-shadow: var(--shadow-sm); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=600&auto=format&fit=crop" alt="Empowerment" style="height: 180px; width: 100%; object-fit: cover;">
+                        <div style="padding: 20px;">
+                            <h4 class="text-serif" style="margin-bottom: 8px;">Empowerment</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Vocational training and micro-financing to boost independent businesses.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
         <section class="detail-section bg-dark text-white text-center">
             <div class="container reveal">
-                <h2 class="text-serif" style="margin-bottom: 24px;">Nourish a Community</h2>
+                <h2 class="text-serif" style="margin-bottom: 24px;">Seed a Farm</h2>
                 <p style="margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.8;">
-                    Your support provides the seeds, tools, and training needed for communities to achieve permanent
-                    food independence.</p>
+                    Your donation directly funds native fruit and nut tree saplings, organic seed stocks, solar micro-irrigation hardware, and local farmer training.</p>
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="../pages/booking.html" class="btn btn-primary">Fund a Harvest</a>
-                    <a href="contact.html" class="btn btn-outline" style="color: white; border-color: white;">Partner
-                        with Us</a>
+                    <a href="booking.html" class="btn btn-primary" style="background: var(--primary); display: inline-block; padding: 14px 36px; border-radius: 30px; color: white; font-weight: 700;">Fund a Local Farm</a>
+                    <a href="contact.html" class="btn btn-outline" style="color: white; border: 2px solid white; display: inline-block; padding: 12px 34px; border-radius: 30px; font-weight: 600;">Partner with Us</a>
                 </div>
             </div>
         </section>
@@ -261,95 +326,59 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer section">
         <div class="container">
-            <div class="footer-top">
+            <div class="footer-top" style="display: grid; grid-template-columns: 1fr 2fr; gap: 80px;">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo text-serif">Hope & Harmony</a>
+                    <a href="../index.html" class="logo text-serif">Hope & Harmony</a>
                     <p>Building sustainable futures through compassion, action, and radical transparency.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Instagram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
-                                </path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Twitter">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Facebook">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
+                    <div class="footer-social" style="display: flex; gap: 12px; margin-top: 15px;">
+                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="Facebook">Facebook</a>
                     </div>
                 </div>
-                <div class="footer-nav-groups">
+                <div class="footer-nav-groups" style="display: flex; gap: 80px; justify-content: flex-end;">
                     <div class="nav-group">
                         <h4>Explore</h4>
                         <ul>
-                            <li><a href="pages/about.html">Our Story</a></li>
-                            <li><a href="pages/services.html">Causes</a></li>
-                            <li><a href="pages/blog.html">Impact Stories</a></li>
-                            <li><a href="pages/pricing.html">Donate</a></li>
+                            <li><a href="about.html">Our Story</a></li>
+                            <li><a href="services.html">Causes</a></li>
+                            <li><a href="blog.html">Impact Stories</a></li>
+                            <li><a href="pricing.html">Donate</a></li>
                         </ul>
                     </div>
                     <div class="nav-group">
                         <h4>Connect</h4>
                         <ul>
-                            <li><a href="pages/contact.html">Contact Us</a></li>
-                            <li><a href="auth/login.html">Donor Portal</a></li>
-                            <li><a href="pages/contact.html">Volunteer</a></li>
-                            <li><a href="pages/contact.html">Partner With Us</a></li>
-                        </ul>
-                    </div>
-                    <div class="nav-group">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="../auth/login.html">Donor Portal</a></li>
+                            <li><a href="contact.html">Volunteer</a></li>
+                            <li><a href="contact.html">Partner With Us</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Hope & Harmony NGO. All rights reserved. Registered Charity No. 1234567.</p>
-                <div class="footer-bottom-links">
+            <div class="footer-bottom" style="border-top: 1px solid rgba(0, 0, 0, 0.08); padding-top: 30px; margin-top: 40px; display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted);">
+                <p>&copy; 2026 Hope & Harmony NGO. All rights reserved.</p>
+                <div class="footer-bottom-links" style="display: flex; gap: 20px;">
                     <a href="#">Privacy</a>
                     <a href="#">Terms</a>
-                    <a href="#">Cookies</a>
                 </div>
             </div>
         </div>
     </footer>
-    
+
     <script src="../src/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            gsap.registerPlugin(ScrollTrigger);
-            gsap.utils.toArray('.reveal').forEach(elem => {
-                gsap.from(elem, {
-                    scrollTrigger: { trigger: elem, start: 'top 85%', toggleActions: 'play none none none' },
-                    y: 40, opacity: 0, duration: 1, ease: 'power3.out'
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.utils.toArray('.reveal').forEach(elem => {
+                    gsap.from(elem, {
+                        scrollTrigger: { trigger: elem, start: 'top 85%', toggleActions: 'play none none none' },
+                        y: 40, opacity: 0, duration: 1, ease: 'power3.out'
+                    });
                 });
-            });
+            }
         });
     </script>
 </body>

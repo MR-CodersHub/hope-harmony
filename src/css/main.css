@@ -11,7 +11,7 @@
     --bg-light: #FDFCFB;
     --bg-white: #FFFFFF;
     --text-main: #1F2937;
-    --text-muted: #6B7280;
+    --text-muted: #5B6370;
     --text-light: #9CA3AF;
     --white: #ffffff;
     --black: #000000;
@@ -52,6 +52,17 @@
 
 html {
     scroll-behavior: initial;
+}
+
+/* Custom Accessibility Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex="0"]:focus-visible {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 2px;
 }
 
 body {
@@ -182,12 +193,16 @@ button,
     width: 100%;
     z-index: 2000;
     padding: 24px 0;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: all 0.4s var(--ease-out-expo);
 }
 
 .header-standard.scrolled {
     background: rgba(253, 252, 251, 0.96);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 14px 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
 }
@@ -218,7 +233,7 @@ button,
 }
 
 .standard-links a {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.85);
     text-transform: uppercase;
@@ -233,8 +248,9 @@ button,
     bottom: -4px;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 3px;
     background: var(--primary);
+    border-radius: 2px;
     transition: width 0.3s ease;
 }
 
@@ -245,11 +261,16 @@ button,
 
 .standard-links a:hover,
 .standard-links a.active {
-    color: var(--primary);
+    color: var(--primary) ;
 }
 
 .header-standard.scrolled .standard-links a {
     color: var(--text-main);
+}
+
+.header-standard.scrolled .standard-links a.active,
+.header-standard.scrolled .standard-links a:hover {
+    color: var(--primary);
 }
 
 .nav-donate-btn {
@@ -279,6 +300,7 @@ button,
     border: none;
     cursor: pointer;
     padding: 4px;
+    z-index: 2010; /* Keep hamburger on top of everything */
 }
 
 .hamburger span {
@@ -292,6 +314,10 @@ button,
 
 .header-standard.scrolled .hamburger span {
     background: var(--text-main);
+}
+
+.hamburger.open span {
+    background: var(--white) !important;
 }
 
 .hamburger.open span:nth-child(1) {
@@ -310,7 +336,9 @@ button,
 .mobile-nav-overlay {
     position: fixed;
     inset: 0;
-    background: var(--text-main);
+    background: rgba(17, 17, 17, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     z-index: 1999;
     display: flex;
     align-items: center;
@@ -318,6 +346,8 @@ button,
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
+    padding: 80px 24px 40px;
+    overflow-y: auto;
 }
 
 .mobile-nav-overlay.open {
@@ -328,13 +358,27 @@ button,
 .mobile-nav-links {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
     text-align: center;
+    width: 100%;
+    margin: auto 0; /* center content vertically when it doesn't overflow */
+}
+
+/* Header state when mobile menu is open */
+.header-standard.mobile-menu-active {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+.header-standard.mobile-menu-active .logo {
+    color: var(--white) !important;
 }
 
 .mobile-nav-links a {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: var(--white);
     transition: color 0.3s ease;
 }
@@ -2677,12 +2721,18 @@ button,
 .page-grey-nav {
     background: rgba(226, 232, 240, 0.97) !important;
     backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06) !important;
 }
 
 .page-grey-nav .logo,
 .page-grey-nav .standard-links a {
     color: var(--text-main) !important;
+}
+
+.page-grey-nav .standard-links a.active,
+.page-grey-nav .standard-links a:hover {
+    color: var(--primary) !important;
 }
 
 .page-grey-nav .login-icon-btn {
